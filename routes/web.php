@@ -20,3 +20,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::group(['prefix' => 'home'], function()
+{
+    Route::get('admin', 'App\Http\Controllers\HomeController@adminHome')
+    ->middleware("checkrole:admin|smod")->name('adminHome');
+
+    Route::get('mod', 'App\Http\Controllers\HomeController@modHome')
+    ->middleware("checkrole:admin|smod|mod")->name('modHome');
+
+    Route::get('user', 'App\Http\Controllers\HomeController@userHome');
+});
