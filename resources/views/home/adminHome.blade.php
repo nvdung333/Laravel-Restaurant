@@ -14,12 +14,10 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Hello Admin!') }}
                 </div>
             </div>
-            <a class="btn btn-secondary" href="{{ url("/home/admin") }}" role="button">Admin Home</a>
-            <a class="btn btn-secondary" href="{{ url("/home/mod") }}" role="button">Moderator Home</a>
-            <a class="btn btn-secondary" href="{{ url("/home/user") }}" role="button">User Home</a>
+            <a class="btn btn-primary" href="{{ url("/home") }}" role="button">Normal Home</a>
         </div>
     </div>
 </div>
