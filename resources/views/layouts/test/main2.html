@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield("title")</title>
 
-    <!-- font-awesome -->
-    <link rel="stylesheet" href="D:/xampp/htdocs/T3H/1-ProjectForTheEndOfTheCourse/LaravelRestaurant/public/fe-assets/fontawesome-free-5.15.3-web/css/fontawesome.min.css">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="D:/xampp/htdocs/T3H/1-ProjectForTheEndOfTheCourse/LaravelRestaurant/public/fe-assets/fontawesome-free-5.15.3-web/css/all.css">
 
     <!-- bootstrap css -->
     <link rel="stylesheet" type="text/css" href="D:/xampp/htdocs/T3H/1-ProjectForTheEndOfTheCourse/LaravelRestaurant/public/fe-assets/bootstrap-4.6.0/css/bootstrap.css">
@@ -23,15 +23,14 @@
 </head>
 <body>
     
-    <div id="ontop">
+    <div id="ontopsticky">
         <header class="header" id="header">
             <div class="container-{breakpoint}">
                 <div class="header-left">
                     <a href="main2.html">
                         <img class="header-logo" src="logo.png" alt="Logo">
                     </a>
-                </div>
-            
+                </div>      
                 <div class="header-right">
                     <a href="#login" style="color: black;" role="button">Login</a>
                     <a href="#register" style="color: black" role="button">Register</a>
@@ -40,22 +39,21 @@
             </div>
         </header>
     
-        <section class="navbar" id="sticky">
-            <div class="container-{breakpoint}">
-                <nav class="navbar-collapse navbar-expand">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link " href="#">HOME</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="#">PIZZA</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">MÌ Ý & CƠM</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">MÓN KHAI VỊ</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">THỨC UỐNG</a></li>
-                    </ul>
-                </nav>
-            </div>
+        <section class="thenavbar" id="navbar">
+            <!-- <div class="container-{breakpoint}"> -->
+                <ul class="navbar-ul" id="navbar-ul">
+                    <a class="nav-link icon" href="javascript:void(0);" onclick="navfunction()"><i class="fas fa-bars"></i></a>
+                    <li class="nav-item"><a class="nav-link " href="#1">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#2">PIZZA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#3">MÌ Ý & CƠM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#4">MÓN KHAI VỊ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#5">THỨC UỐNG</a></li> 
+                </ul>
+            <!-- </div> -->
         </section>
     </div>
 
-    <script src="sticky.js"></script>
+    <script src="main2js.js"></script>
 
     <div style="padding: 5px 30px;">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione earum vitae asperiores, sapiente enim dolorem inventore maxime reiciendis incidunt assumenda eum cum! Ipsam hic arch itecto fugit cupiditate ea earum est.</p>
