@@ -32,3 +32,6 @@ Route::group(['prefix' => 'home'], function()
 
     Route::get('user', 'App\Http\Controllers\HomeController@userHome');
 });
+
+// Backend
+Route::get('/backend', "App\Http\Controllers\Backend\DashboardController@index")->middleware("auth")->middleware("checkrole:admin|smod|mod")->name('backendhome');

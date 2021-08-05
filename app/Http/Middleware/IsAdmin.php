@@ -19,8 +19,9 @@ class IsAdmin
         if(auth()->user()->is_admin == 1){
             return $next($request);
         }
+        abort(403, "YOU ARE NOT A SYSTEM ADMIN.");
 
         // return redirect(‘home’)->with(‘error’,"You don't have admin access.");
-        return redirect()->route('home');
+        // return redirect()->route('home');
     }
 }

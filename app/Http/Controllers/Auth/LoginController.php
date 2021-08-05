@@ -7,6 +7,9 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
+use App\Models\Role_User;
+use Illuminate\Support\Facades\DB;
+
 class LoginController extends Controller
 {
     /*
@@ -50,11 +53,26 @@ class LoginController extends Controller
    
         if(auth()->attempt(array('username' => $input['username'], 'password' => $input['password'])))
         {
-            if (auth()->user()->is_admin == 1) {
-                return redirect()->route('adminHome');
-            }else{
-                return redirect()->route('home');
+            // if (auth()->user()->is_admin == 1) {
+            //     return redirect()->route('adminHome');           
+            // }else{
+            //     return redirect()->route('home');
+            // }
+            
+            $id = auth()->user()->id;
+            $roles = Role_User::select('role_id')->where('user_id',$id)->get();
+            foreach ($roles as $role)
+            {
+                $roleid = $role->role_id;
+                $roleselect = DB::table('roles')->select('name')->where('id',$roleid)->find($roleid);
+                $rolename = $roleselect->name;
+                // echo "<pre>";
+                // echo "id=".$roleid." name=".$rolename;
+                // echo "</pre>";
+                if($rolename=="admin" or $rolename=="smod" or $rolename=="mod")
+                { return redirect()->route('backendhome'); }
             }
+            return redirect()->route('home');
         }
         else
         {
