@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\Role;
+Use Illuminate\Support\Carbon;
 
 class CheckRole
 {
@@ -18,7 +19,14 @@ class CheckRole
      * @return mixed
      */
     public function handle(Request $request, Closure $next, $routeroles)
-    {  
+    {
+        $username = auth()->user()->username;
+        $fullname = auth()->user()->User_FullName;
+        $dt=time();
+        echo "<pre>";
+        echo (date("l, Y-m-d H:i:s",$dt))."<br>".($username)." - ".($fullname);
+        echo "</pre>";
+
         $id = auth()->user()->id;
         $users = User::find($id);
         $roles = $users->rolesmodelfunc;
