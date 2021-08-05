@@ -45,6 +45,9 @@ class User extends Authenticatable
         // 'email_verified_at' => 'datetime',
     ];
 
+    protected $table = 'users';
+    protected $primaryKey = 'id';
+
     public function rolesmodelfunc()
     {
         return $this->belongsToMany(Role::class, 'role_user');

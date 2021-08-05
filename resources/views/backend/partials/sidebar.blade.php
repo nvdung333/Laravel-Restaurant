@@ -25,13 +25,14 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-users-cog"></i>
-            <span>Users</span>
+            <span>User Setting</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom::</h6>
+                <h6 class="collapse-header">Custom:</h6>
                 <a class="collapse-item" href="#">System Admin</a>
-                <a class="collapse-item" href="#">Role</a>
+                <a class="collapse-item" href="#">Roles</a>
+                <a class="collapse-item" href="#">List Users</a>
             </div>
         </div>
     </li>
