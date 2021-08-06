@@ -9,6 +9,11 @@ class OrderDetailsModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'orderdetails';
+    protected $table = 't_orderdetails';
     protected $primaryKey = 'id';
+
+    public function orderdetails_order_modelfunc()
+    {
+        return $this->belongsTo(OrdersModel::class);
+    }
 }

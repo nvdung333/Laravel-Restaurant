@@ -9,6 +9,11 @@ class ProductsModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'products';
+    protected $table = 't_products';
     protected $primaryKey = 'id';
+
+    public function products_category_modelfunc()
+    {
+        return $this->belongsTo(CategoriesModel::class);
+    }
 }
