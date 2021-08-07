@@ -21,6 +21,7 @@ class CreateTCategoriesTable extends Migration
             $table->text('Category_Description')->nullable();
             $table->foreignId('Category_Parent_ID')->nullable();
             $table->timestamps();
+            $table->string('created_user');
             $table->string('modified_user');
             
             $table->foreign('Category_Parent_ID')->references('id')->on('t_categories');            

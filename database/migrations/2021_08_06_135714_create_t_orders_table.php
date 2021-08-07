@@ -43,6 +43,7 @@ class CreateTOrdersTable extends Migration
             $table->dateTime('Order_Time_Return')->nullable();
             
             $table->timestamps();
+            $table->string('created_user');
             $table->string('modified_user');
             
             $table->foreign('User_ID')->references('id')->on('users')

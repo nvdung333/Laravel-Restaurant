@@ -38,7 +38,7 @@
     </li>
 
     <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ url("/backend/category/index") }}">
             <i class="fas fa-fw fa-list-alt"></i>
             <span>Danh mục</span></a>
     </li>

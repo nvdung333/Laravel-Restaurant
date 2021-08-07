@@ -102,6 +102,8 @@
     <script src="{{ asset("/be-assets/js/demo/chart-area-demo.js") }}"></script>
     <script src="{{ asset("/be-assets/js/demo/chart-pie-demo.js") }}"></script>
 
+    @yield("appendjs")
+
 </body>
 
 </html>

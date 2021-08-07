@@ -23,6 +23,7 @@ class CreateTProductsTable extends Migration
             $table->boolean('Product_AvailableStatus');
             $table->boolean('Product_SystemStatus');
             $table->timestamps();
+            $table->string('created_user');
             $table->string('modified_user');
             
             $table->foreign('Category_ID')->references('id')->on('t_categories');

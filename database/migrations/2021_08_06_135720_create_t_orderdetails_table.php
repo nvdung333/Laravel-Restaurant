@@ -23,6 +23,7 @@ class CreateTOrderdetailsTable extends Migration
             $table->text('OrderDetail_Note')->nullable();
             $table->boolean('OrderDetail_Status');
             $table->timestamps();
+            $table->string('created_user');
             $table->string('modified_user');
             
             $table->foreign('Order_ID')->references('id')->on('t_orders')

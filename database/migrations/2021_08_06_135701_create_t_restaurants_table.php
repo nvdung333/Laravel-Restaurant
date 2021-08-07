@@ -23,6 +23,7 @@ class CreateTRestaurantsTable extends Migration
             $table->boolean('Restaurant_OpenStatus');
             $table->boolean('Restaurant_SystemStatus');
             $table->timestamps();
+            $table->string('created_user');
             $table->string('modified_user');            
         });
     }
