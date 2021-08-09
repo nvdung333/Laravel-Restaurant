@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Sửa danh mục hàng hóa</h1>
+        <h1 class="h3 mb-0 text-gray-800">Cập nhật danh mục hàng hóa</h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Report</a>
     </div>
@@ -70,6 +70,7 @@
         </div>
 
         <button type="submit" class="btn btn-warning">Update</button>
+        <a href="{{ url("/backend/category/details/$category->id") }}" class="btn btn-info">Details</a>
         <a href="{{ url("/backend/category/index") }}" class="btn btn-secondary">Trở về</a>
     </form>
 @endsection

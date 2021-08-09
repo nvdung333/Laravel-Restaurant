@@ -182,11 +182,11 @@ class CategoryController extends Controller
         $category->save();
 
         // Chuyển hướng
-        return redirect("/backend/category/edit/$id")->with('status', 'Cập nhật thành công!');
+        return redirect("/backend/category/details/$id")->with('status', 'Cập nhật thành công!');
     }
 
 
-    public function destroy(Request $request, $id) {
+    public function destroy($id) {
         
         // Lấy thông tin dữ liệu và xóa
         $category = CategoriesModel::findorFail($id);
@@ -210,6 +210,6 @@ class CategoryController extends Controller
         $data['category'] = $category;
         $data['parentcategories'] = $parentcategories;
 
-        return view("backend.categories.details");
+        return view("backend.categories.details", $data);
     }
 }
