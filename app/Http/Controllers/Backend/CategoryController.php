@@ -11,14 +11,24 @@ use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
-
     public function index(Request $request) {
         
         $search_keyword = $request->query('keyword', "");
         $order_by = $request->query('orderby', "");
         $order_dir = $request->query('orderdir', "");
 
+        // Truy vấn danh sách Id để tìm kiếm nhóm cha
+        $array_ParentCategories = CategoriesModel::select('id')->where('Category_Name', 'LIKE', '%'.$search_keyword.'%')->get();
+        $id_ParentCategories = [];
+        foreach ($array_ParentCategories as $array_ParentCategory)
+        { $id_ParentCategories[] = $array_ParentCategory->id; }
+
+        // Lệnh truy vấn gốc
         $queryORM = CategoriesModel::where('Category_Name', 'LIKE', '%'.$search_keyword.'%');
+
+        // Bổ sung thêm các phần lọc cho lệnh truy vấn gốc
+        foreach ($id_ParentCategories as $id_ParentCategory)
+        { $queryORM->orwhere('Category_Parent_ID', 'LIKE', $id_ParentCategory); }
 
         if ($order_dir == "ASC") {
             if ($order_by != "")
@@ -37,10 +47,11 @@ class CategoryController extends Controller
             else { $queryORM->orderBy('id'); }
         }
 
+        // Hoàn thành lệnh truy vấn
         $categories = $queryORM->paginate(5)->withQueryString();
 
         // Lấy ra tên parent category của category (nếu có)
-        $parentcategories = DB::table('t_categories as t1', 't1.id as t1id')
+        $parentcategories = DB::table('t_categories as t1')
         ->select('t1.id as t1_id', 't2.Category_Name as t2_name')
         ->leftjoin('t_categories as t2', 't1.Category_Parent_ID', '=', 't2.id')
         ->get();
@@ -54,20 +65,6 @@ class CategoryController extends Controller
         $data["order_dir"] = $order_dir;
 
         return view("backend.categories.index", $data);
-    }
-
-
-    public function details($id) {
-
-        $category = CategoriesModel::findorFail($id);
-        $parentcategories = CategoriesModel::all();
-
-        // Truyền dữ liệu tới view
-        $data = [];
-        $data['category'] = $category;
-        $data['parentcategories'] = $parentcategories;
-
-        return view("backend.categories.details");
     }
     
 
@@ -129,7 +126,7 @@ class CategoryController extends Controller
         if ($Category_Img != null)
         { $path_Category_Img = $request->file('Category_Img')->store('public/images_category'); }
 
-        // Gán dữ liệu request cho các thuộc tính của $category
+        // Gọi model và gán các dữ liệu request
         $category = new CategoriesModel();
 
         $category->Category_Name = $Category_Name;
@@ -168,7 +165,7 @@ class CategoryController extends Controller
         if ($Category_Img != null)
         { $path_Category_Img = $request->file('Category_Img')->store('public/images_category'); }
 
-        // Gán dữ liệu request cho các thuộc tính của $category
+        // Gọi model và gán các dữ liệu request
         $category = CategoriesModel::findorFail($id);
 
         $category->Category_Name = $Category_Name;
@@ -202,4 +199,17 @@ class CategoryController extends Controller
         return redirect("/backend/category/index")->with('status', 'Xóa thành công!');
     }
 
+
+    public function details($id) {
+
+        $category = CategoriesModel::findorFail($id);
+        $parentcategories = CategoriesModel::all();
+
+        // Truyền dữ liệu tới view
+        $data = [];
+        $data['category'] = $category;
+        $data['parentcategories'] = $parentcategories;
+
+        return view("backend.categories.details");
+    }
 }

@@ -21,7 +21,7 @@ class CreateTOrderdetailsTable extends Migration
             $table->integer('OrderDetail_Quantity');
             $table->float('OrderDetail_Price', 12, 2);
             $table->text('OrderDetail_Note')->nullable();
-            $table->boolean('OrderDetail_Status');
+            $table->tinyInteger('OrderDetail_Status');
             $table->timestamps();
             $table->string('created_user');
             $table->string('modified_user');

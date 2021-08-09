@@ -30,7 +30,7 @@ class CreateTOrdersTable extends Migration
             $table->float('Order_TotalPrice', 15, 2);
             $table->text('Order_Note')->nullable();
             
-            $table->boolean('Order_Status');
+            $table->tinyInteger('Order_Status');
             $table->string('Order_CancelBy')->nullable();
             $table->text('Order_CancelReason')->nullable();
             $table->text('Order_ReturnReason')->nullable();

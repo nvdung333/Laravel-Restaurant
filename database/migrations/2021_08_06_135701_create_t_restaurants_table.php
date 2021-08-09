@@ -20,8 +20,8 @@ class CreateTRestaurantsTable extends Migration
             $table->string('Restaurant_Area')->nullable();
             $table->string('Restaurant_Phone')->nullable();
             $table->text('Restaurant_Description')->nullable();
-            $table->boolean('Restaurant_OpenStatus');
-            $table->boolean('Restaurant_SystemStatus');
+            $table->tinyInteger('Restaurant_OpenStatus');
+            $table->tinyInteger('Restaurant_SystemStatus');
             $table->timestamps();
             $table->string('created_user');
             $table->string('modified_user');            

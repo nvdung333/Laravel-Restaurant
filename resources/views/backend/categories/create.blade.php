@@ -52,7 +52,7 @@
             <select class="custom-select" name="Category_Parent_ID" id="Category_Parent_ID">
                 <option value="">Choose...</option>
                 @foreach($parentcategories as $parentcategory)
-                <option value="{{ $parentcategory->id }}">{{ $parentcategory->Category_Name }}</option>
+                <option value="{{ $parentcategory->id }}" {{ old('Category_Parent_ID') == "$parentcategory->id" ? "selected" : "" }}>{{ $parentcategory->Category_Name }}</option>
                 @endforeach
             </select>
         </div>

@@ -44,13 +44,13 @@
     </li>
 
     <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ url("/backend/product/index") }}">
             <i class="fas fa-fw fa-utensils"></i>
             <span>Sản phẩm</span></a>
     </li>
 
     <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ url("/backend/restaurant/index") }}">
             <i class="fas fa-fw fa-store-alt"></i>
             <span>Nhà hàng</span></a>
     </li>

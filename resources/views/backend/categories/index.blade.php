@@ -53,7 +53,7 @@
             <div class="col-md-1">
                 <div class="form-group">
                     <label for="">Filter</label>
-                    <div><button class="btn" style="background: black; color: white;"><i class="fas fa-search"></i></button></div>
+                    <div><button class="btn" style="background: #5a5c69; color: white;"><i class="fas fa-search"></i></button></div>
                 </div>
             </div>
         </div>
@@ -87,9 +87,9 @@
                         @endforeach
                     </td>
                     <td>
-                        <a href="{{ url("/backend/category/details/$category->id") }}" class="btn btn-info">Chi tiết</a>
-                        <a href="{{ url("/backend/category/edit/$category->id") }}" class="btn btn-warning">Sửa</a>
-                        <a href="{{ url("/backend/category/delete/$category->id") }}" class="btn btn-danger">Xóa</a>
+                        <a href="{{ url("/backend/category/details/$category->id") }}" class="btn btn-info">Details</a>
+                        <a href="{{ url("/backend/category/edit/$category->id") }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ url("/backend/category/delete/$category->id") }}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
                 @endforeach

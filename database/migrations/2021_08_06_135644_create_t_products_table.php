@@ -20,8 +20,8 @@ class CreateTProductsTable extends Migration
             $table->string('Product_Img')->nullable();
             $table->text('Product_Description')->nullable();
             $table->float('Product_Price', 12, 2);
-            $table->boolean('Product_AvailableStatus');
-            $table->boolean('Product_SystemStatus');
+            $table->tinyInteger('Product_AvailableStatus');
+            $table->tinyInteger('Product_SystemStatus');
             $table->timestamps();
             $table->string('created_user');
             $table->string('modified_user');
