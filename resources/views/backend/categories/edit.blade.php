@@ -46,6 +46,11 @@
         <div class="form-group">
             <label for="Category_Img">Image:</label>
             <input type="file" name="Category_Img" class="form-control" id="Category_Img">
+            
+            <div>
+                <?php $category->Category_Img = str_replace("public/", "", $category->Category_Img); ?>
+                <img alt=".img" src="{{ asset("storage/$category->Category_Img") }}" style="width: 200px; height: auto" />
+            </div>
         </div>
 
         <div class="form-group">

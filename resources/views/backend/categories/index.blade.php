@@ -19,6 +19,46 @@
         <a href="{{ url("/backend/category/index") }}" class="btn btn-success">Refresh</a>
     </div>
 
+    <form name="searchfilter" method="get" action="{{ htmlspecialchars($_SERVER["REQUEST_URI"]) }}" style="border: 1px solid grey; border-radius: 5px; padding: 10px;">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label for="keyword">Tìm kiếm</label>
+                    <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Search for..." value="{{ $search_keyword }}">
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="orderby">Sắp xếp theo...</label>
+                    <select name="orderby" id="orderby" class="custom-select">
+                        <option value="">Choose...</option>
+                        <option value="id" {{ $order_by == "id" ? "selected" : "" }}>ID</option>
+                        <option value="Category_Name" {{ $order_by == "Category_Name" ? "selected" : "" }}>Name</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="orderdir">Hướng sắp xếp...</label>
+                    <select name="orderdir" id="orderdir" class="custom-select">
+                        <option value="">Choose...</option>
+                        <option value="ASC" {{ $order_dir == "ASC" ? "selected" : "" }}>Ascending</option>
+                        <option value="DESC" {{ $order_dir == "DESC" ? "selected" : "" }}>Descending</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="form-group">
+                    <label for="">Filter</label>
+                    <div><button class="btn" style="background: black; color: white;"><i class="fas fa-search"></i></button></div>
+                </div>
+            </div>
+        </div>
+    </form>
+
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
             <tr>
@@ -34,7 +74,10 @@
                 @foreach($categories as $category)
                 <tr>
                     <th>{{ $category->id }}</th>
-                    <td>img</td>
+                    <td>
+                        <?php $category->Category_Img = str_replace("public/", "", $category->Category_Img); ?>
+                        <img alt=".img" src="{{ asset("storage/$category->Category_Img") }}" style="width: 52px; height: auto" />
+                    </td>
                     <td>{{ $category->Category_Name }}</td>
                     <td>
                         @foreach($parentcategories as $pacategory)

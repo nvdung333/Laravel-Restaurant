@@ -7,25 +7,51 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Backend\CategoriesModel;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
 
-    public function index() {
+    public function index(Request $request) {
         
-        // Lấy danh sách các category từ bảng t_categories
-        $categories = DB::table('t_categories')->paginate(5);
+        $search_keyword = $request->query('keyword', "");
+        $order_by = $request->query('orderby', "");
+        $order_dir = $request->query('orderdir', "");
+
+        $queryORM = CategoriesModel::where('Category_Name', 'LIKE', '%'.$search_keyword.'%');
+
+        if ($order_dir == "ASC") {
+            if ($order_by != "")
+            { $queryORM->orderBy($order_by, 'ASC'); }
+            else { $queryORM->orderBy('id', 'ASC'); }
+        }
+        elseif ($order_dir == "DESC") {
+            if ($order_by != "")
+            { $queryORM->orderBy($order_by, 'DESC'); }
+            else { $queryORM->orderBy('id', 'DESC'); }
+        }
+        else
+        {
+            if ($order_by != "")
+            { $queryORM->orderBy($order_by); }
+            else { $queryORM->orderBy('id'); }
+        }
+
+        $categories = $queryORM->paginate(5)->withQueryString();
 
         // Lấy ra tên parent category của category (nếu có)
         $parentcategories = DB::table('t_categories as t1', 't1.id as t1id')
-                            ->select('t1.id as t1_id', 't2.Category_Name as t2_name')
-                            ->leftjoin('t_categories as t2', 't1.Category_Parent_ID', '=', 't2.id')
-                            ->get();
+        ->select('t1.id as t1_id', 't2.Category_Name as t2_name')
+        ->leftjoin('t_categories as t2', 't1.Category_Parent_ID', '=', 't2.id')
+        ->get();
 
         // Truyền dữ liệu tới view
         $data = [];
         $data['categories'] = $categories;
         $data['parentcategories'] = $parentcategories;
+        $data["search_keyword"] = $search_keyword;
+        $data["order_by"] = $order_by;
+        $data["order_dir"] = $order_dir;
 
         return view("backend.categories.index", $data);
     }
@@ -88,23 +114,27 @@ class CategoryController extends Controller
         $validatedData = $request->validate([
             'Category_Name' => 'required',
             'slug' => 'required',
+            'Category_Img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3000',
         ]);
 
         
         // Dữ liệu request (từ view)
         $Category_Name = $request->input('Category_Name', "");
         $slug = $request->input('slug', "");
-        $Category_Img = "";
+        $Category_Img = $request->file('Category_Img');
         $Category_Description = $request->input('Category_Description', "");
         $Category_Parent_ID = $request->input('Category_Parent_ID', "");
 
+        // Lưu file ảnh (nếu có) vào thư mục
+        if ($Category_Img != null)
+        { $path_Category_Img = $request->file('Category_Img')->store('public/images_category'); }
 
         // Gán dữ liệu request cho các thuộc tính của $category
         $category = new CategoriesModel();
 
         $category->Category_Name = $Category_Name;
         $category->slug = $slug;
-        $category->Category_Img = $Category_Img;
+        if ($Category_Img != null) { $category->Category_Img = $path_Category_Img; }
         $category->Category_Description = $Category_Description;
         $category->Category_Parent_ID = $Category_Parent_ID;
         $category->created_user = auth()->user()->id;
@@ -124,21 +154,29 @@ class CategoryController extends Controller
         $validatedData = $request->validate([
             'Category_Name' => 'required',
             'slug' => 'required',
+            'Category_Img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3000',
         ]);
 
         // Dữ liệu request (từ view)
         $Category_Name = $request->input('Category_Name', "");
         $slug = $request->input('slug', "");
-        $Category_Img = "";
+        $Category_Img = $request->file('Category_Img');
         $Category_Description = $request->input('Category_Description', "");
         $Category_Parent_ID = $request->input('Category_Parent_ID', "");
+
+        // Lưu file ảnh (nếu có) vào thư mục
+        if ($Category_Img != null)
+        { $path_Category_Img = $request->file('Category_Img')->store('public/images_category'); }
 
         // Gán dữ liệu request cho các thuộc tính của $category
         $category = CategoriesModel::findorFail($id);
 
         $category->Category_Name = $Category_Name;
         $category->slug = $slug;
-        $category->Category_Img = $Category_Img;
+        if ($Category_Img != null) {
+            Storage::delete($category->Category_Img);
+            $category->Category_Img = $path_Category_Img;
+        }
         $category->Category_Description = $Category_Description;
         $category->Category_Parent_ID = $Category_Parent_ID;
         $category->modified_user = auth()->user()->id;
@@ -156,6 +194,9 @@ class CategoryController extends Controller
         // Lấy thông tin dữ liệu và xóa
         $category = CategoriesModel::findorFail($id);
         $category->delete();
+
+        // Xóa ảnh, giải phóng dung lượng
+        Storage::delete($category->Category_Img);
 
         // Chuyển hướng
         return redirect("/backend/category/index")->with('status', 'Xóa thành công!');
