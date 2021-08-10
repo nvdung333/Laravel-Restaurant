@@ -40,7 +40,7 @@
         </div>
         
         <button type="submit" class="btn btn-danger">Destroy</button>
-        <a href="{{ url("/backend/category/details/$category->id") }}" class="btn btn-info">Details</a>
+        <a href="{{ url("/backend/category/info/$category->id") }}" class="btn btn-info">Info</a>
         <a href="{{ url("/backend/category/index") }}" class="btn btn-secondary">Trở về</a>
 
     </form>

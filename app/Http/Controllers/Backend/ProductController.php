@@ -198,7 +198,7 @@ class ProductController extends Controller
         $product->save();
 
         // Chuyển hướng
-        return redirect("/backend/product/details/$id")->with('status', 'Cập nhật thành công!');
+        return redirect("/backend/product/info/$id")->with('status', 'Cập nhật thành công!');
     }
 
 
@@ -216,7 +216,7 @@ class ProductController extends Controller
     }
 
 
-    public function details($id) {
+    public function info($id) {
         
         $product = ProductsModel::findorFail($id);
         $categories = DB::table('t_categories')->select()->get();
@@ -226,6 +226,6 @@ class ProductController extends Controller
         $data['product'] = $product;
         $data['categories'] = $categories;
 
-        return view("backend.products.details", $data);
+        return view("backend.products.info", $data);
     }
 }

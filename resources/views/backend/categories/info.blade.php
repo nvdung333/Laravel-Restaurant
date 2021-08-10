@@ -81,6 +81,6 @@
         <a href="{{ url("/backend/category/edit/$category->id") }}" class="btn btn-warning">Edit</a>
         <a href="{{ url("/backend/category/delete/$category->id") }}" class="btn btn-danger">Delete</a>
         <a href="{{ url("/backend/category/index") }}" class="btn btn-secondary">Trở về</a>
-        <a href="{{ url("/backend/category/details/$category->id") }}" class="btn btn-success">Refresh</a>
+        <a href="{{ url("/backend/category/info/$category->id") }}" class="btn btn-success">Refresh</a>
     </form>
 @endsection

@@ -94,6 +94,6 @@
         <a href="{{ url("/backend/product/edit/$product->id") }}" class="btn btn-warning">Edit</a>
         <a href="{{ url("/backend/product/delete/$product->id") }}" class="btn btn-danger">Delete</a>
         <a href="{{ url("/backend/product/index") }}" class="btn btn-secondary">Trở về</a>
-        <a href="{{ url("/backend/product/details/$product->id") }}" class="btn btn-success">Refresh</a>
+        <a href="{{ url("/backend/product/info/$product->id") }}" class="btn btn-success">Refresh</a>
     </form>
 @endsection

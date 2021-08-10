@@ -40,7 +40,7 @@
         </div>
         
         <button type="submit" class="btn btn-danger">Destroy</button>
-        <a href="{{ url("/backend/product/details/$product->id") }}" class="btn btn-info">Details</a>
+        <a href="{{ url("/backend/product/info/$product->id") }}" class="btn btn-info">Info</a>
         <a href="{{ url("/backend/product/index") }}" class="btn btn-secondary">Trở về</a>
     </form>
 @endsection

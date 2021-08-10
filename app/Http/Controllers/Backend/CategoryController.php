@@ -182,7 +182,7 @@ class CategoryController extends Controller
         $category->save();
 
         // Chuyển hướng
-        return redirect("/backend/category/details/$id")->with('status', 'Cập nhật thành công!');
+        return redirect("/backend/category/info/$id")->with('status', 'Cập nhật thành công!');
     }
 
 
@@ -200,7 +200,7 @@ class CategoryController extends Controller
     }
 
 
-    public function details($id) {
+    public function info($id) {
 
         $category = CategoriesModel::findorFail($id);
         $parentcategories = CategoriesModel::all();
@@ -210,6 +210,6 @@ class CategoryController extends Controller
         $data['category'] = $category;
         $data['parentcategories'] = $parentcategories;
 
-        return view("backend.categories.details", $data);
+        return view("backend.categories.info", $data);
     }
 }
