@@ -204,11 +204,13 @@ class CategoryController extends Controller
 
         $category = CategoriesModel::findorFail($id);
         $parentcategories = CategoriesModel::all();
+        $users = DB::table('users')->select()->get();
 
         // Truyền dữ liệu tới view
         $data = [];
         $data['category'] = $category;
         $data['parentcategories'] = $parentcategories;
+        $data['users'] = $users;
 
         return view("backend.categories.info", $data);
     }

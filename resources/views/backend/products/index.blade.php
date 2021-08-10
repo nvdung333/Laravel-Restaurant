@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="whereCategory">Theo danh mục con...</label>
+                    <label for="whereCategory">Theo danh mục...</label>
                     <select name="whereCategory" id="whereCategory" class="custom-select">
                         <option value="">Choose...</option>
                         @foreach($categories as $category)
@@ -87,7 +87,7 @@
         </div>
     </form>
 
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped table-sm">
         <thead class="thead-dark">
             <tr>
                 <th>ID</th>

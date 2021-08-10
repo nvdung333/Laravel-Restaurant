@@ -24,6 +24,10 @@
         </div>
     @endif
 
+    <div style="padding-bottom: 10px">
+        <a href="{{ url("/backend/product/index") }}" class="btn btn-secondary">Trở về</a>
+        <a href="{{ url("/backend/product/info/$product->id") }}" class="btn btn-success">Refresh</a>
+    </div>
 
     <form enctype="multipart/form-data">
 
@@ -90,10 +94,12 @@
             </div>
         </div>
 
+        <label>Created at:&nbsp</label><span>{{$product->created_at}}</span><br>
+        <label>Updated at:&nbsp</label><span>{{$product->updated_at}}</span><br>
+        <label>Created user:&nbsp</label>@foreach($users as $user) @if($user->id == $product->created_user) <span>{{$user->User_FullName}}</span> @endif @endforeach <br>
+        <label>Modified user:&nbsp</label>@foreach($users as $user) @if($user->id == $product->modified_user) <span>{{$user->User_FullName}}</span> @endif @endforeach <br>
 
         <a href="{{ url("/backend/product/edit/$product->id") }}" class="btn btn-warning">Edit</a>
         <a href="{{ url("/backend/product/delete/$product->id") }}" class="btn btn-danger">Delete</a>
-        <a href="{{ url("/backend/product/index") }}" class="btn btn-secondary">Trở về</a>
-        <a href="{{ url("/backend/product/info/$product->id") }}" class="btn btn-success">Refresh</a>
     </form>
 @endsection

@@ -24,6 +24,10 @@
         </div>
     @endif
 
+    <div style="padding-bottom: 10px">
+        <a href="{{ url("/backend/category/index") }}" class="btn btn-secondary">Trở về</a>
+        <a href="{{ url("/backend/category/info/$category->id") }}" class="btn btn-success">Refresh</a>
+    </div>
 
     <form enctype="multipart/form-data">
 
@@ -77,10 +81,12 @@
             </div>
         </div>
 
+        <label>Created at:&nbsp</label><span>{{$category->created_at}}</span><br>
+        <label>Updated at:&nbsp</label><span>{{$category->updated_at}}</span><br>
+        <label>Created user:&nbsp</label>@foreach($users as $user) @if($user->id == $category->created_user) <span>{{$user->User_FullName}}</span> @endif @endforeach <br>
+        <label>Modified user:&nbsp</label>@foreach($users as $user) @if($user->id == $category->modified_user) <span>{{$user->User_FullName}}</span> @endif @endforeach <br>
 
         <a href="{{ url("/backend/category/edit/$category->id") }}" class="btn btn-warning">Edit</a>
         <a href="{{ url("/backend/category/delete/$category->id") }}" class="btn btn-danger">Delete</a>
-        <a href="{{ url("/backend/category/index") }}" class="btn btn-secondary">Trở về</a>
-        <a href="{{ url("/backend/category/info/$category->id") }}" class="btn btn-success">Refresh</a>
     </form>
 @endsection

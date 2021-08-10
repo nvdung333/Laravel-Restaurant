@@ -14,7 +14,7 @@ class ProductController extends Controller
     public function index(Request $request) {
 
         $search_keyword = $request->query('keyword', "");
-        $whereCategory = $request->query('whereCategory', "");
+        $whereCategory = (int)$request->query('whereCategory', "");
         $whereAvailableStatus = $request->query('whereAvailableStatus', "");
         $whereSystemStatus = $request->query('whereSystemStatus', "");
         $order_dir = $request->query('orderdir', "");
@@ -22,13 +22,26 @@ class ProductController extends Controller
         // Lấy ra tất cả category
         $categories = DB::table('t_categories')->select()->get();
 
+        // Lấy ra tất cả danh mục con
+        $ChildCategories = [];
+        foreach ($categories as $category) {
+            if($category->Category_Parent_ID == $whereCategory)
+            { $ChildCategories[] = $category->id; }
+        }
+
         // Lệnh truy vấn gốc
         $queryORM = ProductsModel::where('Product_Name', 'LIKE', '%'.$search_keyword.'%');
 
         // Bổ sung thêm các phần lọc cho lệnh truy vấn gốc
-        // Theo danh mục con
-        if ($whereCategory != "")
-        { $queryORM->where('Category_ID', $whereCategory); }
+        // Theo danh mục
+        if ($whereCategory != "") {
+            $queryORM->where(function ($query) use ($ChildCategories, $whereCategory) {
+                $query->where('Category_ID', $whereCategory);
+                foreach($ChildCategories as $ChildCategory)
+                { $query->orWhere('Category_ID', $ChildCategory); }
+            });
+        }
+
         // Trạng thái bán
         if ($whereAvailableStatus != "") {
             $queryORM->where('Product_AvailableStatus', $whereAvailableStatus);
@@ -116,7 +129,6 @@ class ProductController extends Controller
             'Category_ID' => 'required',
             'Product_Name' => 'required',
             'Product_Img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3000',
-            'Product_Description' => 'required',
             'Product_Price' => 'required|numeric',
         ]);
         
@@ -159,7 +171,6 @@ class ProductController extends Controller
             'Category_ID' => 'required',
             'Product_Name' => 'required',
             'Product_Img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3000',
-            'Product_Description' => 'required',
             'Product_Price' => 'required|numeric',
             'Product_AvailableStatus' => 'required',
             'Product_SystemStatus' => 'required',
@@ -220,11 +231,13 @@ class ProductController extends Controller
         
         $product = ProductsModel::findorFail($id);
         $categories = DB::table('t_categories')->select()->get();
+        $users = DB::table('users')->select()->get();
 
         // Truyền dữ liệu tới view
         $data = [];
         $data['product'] = $product;
         $data['categories'] = $categories;
+        $data['users'] = $users;
 
         return view("backend.products.info", $data);
     }
