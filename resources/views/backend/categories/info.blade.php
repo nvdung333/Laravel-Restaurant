@@ -30,6 +30,12 @@
     </div>
 
     <form enctype="multipart/form-data">
+        <div class="form-group">
+            <span style="background: black; padding: 3px">
+                <label style="color:white">ID:</label>
+                <a style="color:lightgreen">{{ $category->id }}</a>
+            </span>
+        </div>
 
         <div class="row">
             <div class="col-md-6">

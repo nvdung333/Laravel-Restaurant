@@ -175,7 +175,6 @@ class ProductController extends Controller
             'Product_AvailableStatus' => 'required',
             'Product_SystemStatus' => 'required',
         ]);
-
         
         // Dữ liệu request (từ view)
         $Category_ID = $request->input('Category_ID', "");
