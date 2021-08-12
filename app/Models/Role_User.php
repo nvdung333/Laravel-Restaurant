@@ -10,4 +10,6 @@ class Role_User extends Model
     use HasFactory;
 
     protected $table = 'role_user';
+
+    public $timestamps = false;
 }

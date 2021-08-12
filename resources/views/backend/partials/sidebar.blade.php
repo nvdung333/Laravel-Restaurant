@@ -30,9 +30,9 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom:</h6>
-                <a class="collapse-item" href="#">System Admin</a>
-                <a class="collapse-item" href="#">Roles</a>
-                <a class="collapse-item" href="#">List Users</a>
+                <a class="collapse-item" href="{{ url("/backend/user/index") }}">Users</a>
+                <a class="collapse-item" href="{{ url("/backend/user/role") }}">Roles</a>
+                <a class="collapse-item" href="{{ url("/backend/user/admin") }}">System Admin</a>
             </div>
         </div>
     </li>

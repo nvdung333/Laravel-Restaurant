@@ -72,6 +72,8 @@ class LoginController extends Controller
                 if($rolename=="admin" or $rolename=="smod" or $rolename=="mod")
                 { return redirect()->route('backendhome'); }
             }
+            if (auth()->user()->is_admin==1)
+            { return redirect()->route('adminHome'); }
             return redirect()->route('home');
         }
         else

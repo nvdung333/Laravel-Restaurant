@@ -26,7 +26,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['prefix' => 'home'], function()
 {
     Route::get('admin', 'App\Http\Controllers\HomeController@adminHome')
-    ->middleware("checkrole:admin|smod")->name('adminHome');
+    ->middleware("is_admin")->name('adminHome');
 
     Route::get('mod', 'App\Http\Controllers\HomeController@modHome')
     ->middleware("checkrole:admin|smod|mod")->name('modHome');
@@ -77,3 +77,15 @@ Route::group(['prefix' => 'backend/restaurant'], function()
     Route::post('destroy/{id}', "App\Http\Controllers\Backend\RestaurantController@destroy")->middleware("auth")->middleware("checkrole:admin|smod|mod");
     Route::get('info/{id}', "App\Http\Controllers\Backend\RestaurantController@info")->middleware("auth")->middleware("checkrole:admin|smod|mod");
 });
+
+
+// Backend User Setting
+Route::group(['prefix' => 'backend/user'], function()
+{
+    Route::get('index', "App\Http\Controllers\Backend\UserController@index")->middleware("auth")->middleware("checkrole:admin|smod");
+    Route::get('role', "App\Http\Controllers\Backend\UserController@role")->middleware("auth")->middleware("is_admin");
+    Route::post('role/update', "App\Http\Controllers\Backend\UserController@roleUpdate")->middleware("auth")->middleware("is_admin");
+    Route::get('admin', "App\Http\Controllers\Backend\UserController@admin")->middleware("auth")->middleware("is_admin");
+    Route::post('admin/update', "App\Http\Controllers\Backend\UserController@adminUpdate")->middleware("auth")->middleware("is_admin");
+});
+

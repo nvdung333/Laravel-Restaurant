@@ -18,6 +18,8 @@
                 </div>
             </div>
             <a class="btn btn-primary" href="{{ url("/home") }}" role="button">Normal Home</a>
+            <a class="btn btn-primary" href="{{ url("/backend/user/admin") }}" role="button">Admin Setting</a>
+            <a class="btn btn-primary" href="{{ url("/backend/user/role") }}" role="button">Role Setting</a>
         </div>
     </div>
 </div>
