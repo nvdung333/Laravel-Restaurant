@@ -22,7 +22,8 @@
 
     <div style="padding-bottom: 10px">
         <a href="{{ url("/backend") }}" class="btn btn-primary">Home</a>
-        <a href="{{ url("/backend/user/role") }}" class="btn btn-warning">Role Setting</a>
+        <a href="{{ url("/backend/user/srole") }}" class="btn btn-warning">Role Setting (for system)</a>
+        <a href="{{ url("/backend/user/role") }}" class="btn btn-warning">Role Setting (normal)</a>
         <a href="{{ url("/backend/user/admin") }}" class="btn btn-success">Refresh</a>
     </div>
 

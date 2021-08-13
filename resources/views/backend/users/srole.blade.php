@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Role-User Setting (normal)</h1>
+        <h1 class="h3 mb-0 text-gray-800">Role-User Setting (for system)</h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Report</a>
     </div>
@@ -23,7 +23,7 @@
     <div style="padding-bottom: 10px">
         <a href="{{ url("/backend") }}" class="btn btn-primary">Home</a>
         <a href="{{ url("/backend/user/admin") }}" class="btn btn-danger">Admin Setting</a>
-        <a href="{{ url("/backend/user/role") }}" class="btn btn-success">Refresh</a>
+        <a href="{{ url("/backend/user/srole") }}" class="btn btn-success">Refresh</a>
     </div>
 
     <form name="searchfilter" method="get" action="{{ htmlspecialchars($_SERVER["REQUEST_URI"]) }}" style="border: 1px solid grey; border-radius: 5px; padding: 10px;">
@@ -55,7 +55,7 @@
         </div>
     </form>
     <br>
-    <form method="post" enctype="multipart/form-data" action="{{ url("/backend/user/role/update") }}">
+    <form method="post" enctype="multipart/form-data" action="{{ url("/backend/user/srole/update") }}">
         @csrf
         <table class="table table-bordered table-striped table-sm">
             <thead class="thead-dark">
