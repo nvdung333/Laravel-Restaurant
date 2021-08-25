@@ -20,7 +20,7 @@
         <div class="col-md-3 col-sm-4 col-6">
             <div class="card" id="product">
                 <div id="product-img">
-                    <img class="card-img-top" src="{{ asset("/storage/images_product/items/0.png") }}" alt="product_img">
+                    <img class="card-img-top" src="{{ asset("/storage/images_product/items/1.png") }}" alt="product_img">
                 </div>
                 <div class="card-body" id="product-body">
                     <p id="product-name">Tên món dài dằng dặc siêu dài, dài lê thê </p>
@@ -33,7 +33,7 @@
         <div class="col-md-3 col-sm-4 col-6">
             <div class="card" id="product">
                 <div id="product-img">
-                    <img class="card-img-top" src="{{ asset("/storage/images_product/items/0.png") }}" alt="product_img">
+                    <img class="card-img-top" src="{{ asset("/storage/images_product/items/1.png") }}" alt="product_img">
                 </div>
                 <div class="card-body" id="product-body">
                     <p id="product-name">Tên món ngắn gọn 1 dòng</p>
@@ -59,7 +59,7 @@
         <div class="col-md-3 col-sm-4 col-6">
             <div class="card" id="product">
                 <div id="product-img">
-                    <img class="card-img-top" src="{{ asset("/storage/images_product/items/0.png") }}" alt="product_img">
+                    <img class="card-img-top" src="{{ asset("/storage/images_product/items/1.png") }}" alt="product_img">
                 </div>
                 <div class="card-body" id="product-body">
                     <p id="product-name">Tên món ngắn gọn 1 dòng</p>
@@ -85,7 +85,7 @@
         <div class="col-md-3 col-sm-4 col-6">
             <div class="card" id="product">
                 <div id="product-img">
-                    <img class="card-img-top" src="{{ asset("/storage/images_product/items/0.png") }}" alt="product_img">
+                    <img class="card-img-top" src="{{ asset("/storage/images_product/items/1.png") }}" alt="product_img">
                 </div>
                 <div class="card-body" id="product-body">
                     <p id="product-name">Tên món ngắn gọn 1 dòng</p>
@@ -100,5 +100,5 @@
 @endsection
 
 @section('cart-btn')
-    @include('frontend.cart-btn')
+    @include('frontend.partials.cart-btn')
 @endsection

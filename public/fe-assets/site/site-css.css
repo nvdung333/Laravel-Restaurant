@@ -60,13 +60,12 @@
     background: #ffffe0;
 }
 #product {
-    margin: 4px 5px;
+    margin: 4px;
 }
 #product > #product-img {
-    margin: 1px;
     display: flex;
     justify-content: center;
-    height: auto;
+    width: 100%;;
 }
 #product > #product-body {
     padding: 5px;
