@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    // return view('welcome');
+    return redirect('thesite');
+})->name('/');
 
 Auth::routes();
 
@@ -90,4 +91,11 @@ Route::group(['prefix' => 'backend/user'], function()
     Route::get('index', "App\Http\Controllers\Backend\UserController@index")->middleware("auth")->middleware("checkrole:admin|smod");
     Route::get('role', "App\Http\Controllers\Backend\UserController@role")->middleware("auth")->middleware("checkrole:admin");
     Route::post('role/update', "App\Http\Controllers\Backend\UserController@roleUpdate")->middleware("auth")->middleware("checkrole:admin");
+});
+
+
+
+// Frontend
+Route::get('thesite', function() {
+    return view("frontend.test");
 });

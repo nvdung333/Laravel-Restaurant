@@ -146,9 +146,9 @@
                     </td>
                     <td>{{ $product->Product_Price }}</td>
                     <td>
-                        <a href="{{ url("/backend/product/info/$product->id") }}" class="btn btn-info">Info</a>
-                        <a href="{{ url("/backend/product/edit/$product->id") }}" class="btn btn-warning">Edit</a>
-                        <a href="{{ url("/backend/product/delete/$product->id") }}" class="btn btn-danger">Delete</a>
+                        <a href="{{ url("/backend/product/info/$product->id") }}" class="btn btn-info" data-toggle="tooltip" title="Info"><i class="fas fa-info-circle"></i></a>
+                        <a href="{{ url("/backend/product/edit/$product->id") }}" class="btn btn-warning" data-toggle="tooltip" title="Edit"><i class="fas fa-edit"></i></a>
+                        <a href="{{ url("/backend/product/delete/$product->id") }}" class="btn btn-danger" data-toggle="tooltip" title="Delete"><i class="fas fa-minus-circle"></i></a>
                     </td>
                 </tr>
                 @endforeach
@@ -160,4 +160,13 @@
 
     {{ $products->links("pagination::bootstrap-4") }}
 
+@endsection
+
+
+@section('appendjs')
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
+    </script>
 @endsection

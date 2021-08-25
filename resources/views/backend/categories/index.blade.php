@@ -65,6 +65,7 @@
                 <th>ID</th>
                 <th>Image</th>
                 <th>Category_Name</th>
+                <th>Slug</th>
                 <th>Category_Parent</th>
                 <th>Options</th>
             </tr>
@@ -79,6 +80,7 @@
                         <img alt=".img" src="{{ asset("storage/$category->Category_Img") }}" style="width: 52px; height: auto" />
                     </td>
                     <td>{{ $category->Category_Name }}</td>
+                    <td>{{ $category->slug }}</td>
                     <td>
                         @foreach($parentcategories as $pacategory)
                             @if($pacategory->t1_id == $category->id)
@@ -87,9 +89,9 @@
                         @endforeach
                     </td>
                     <td>
-                        <a href="{{ url("/backend/category/info/$category->id") }}" class="btn btn-info">Info</a>
-                        <a href="{{ url("/backend/category/edit/$category->id") }}" class="btn btn-warning">Edit</a>
-                        <a href="{{ url("/backend/category/delete/$category->id") }}" class="btn btn-danger">Delete</a>
+                        <a href="{{ url("/backend/category/info/$category->id") }}" class="btn btn-info" data-toggle="tooltip" title="Info"><i class="fas fa-info-circle"></i></a>
+                        <a href="{{ url("/backend/category/edit/$category->id") }}" class="btn btn-warning" data-toggle="tooltip" title="Edit"><i class="fas fa-edit"></i></a>
+                        <a href="{{ url("/backend/category/delete/$category->id") }}" class="btn btn-danger" data-toggle="tooltip" title="Delete"><i class="fas fa-minus-circle"></i></a>
                     </td>
                 </tr>
                 @endforeach
@@ -101,4 +103,13 @@
 
     {{ $categories->links("pagination::bootstrap-4") }}
 
+@endsection
+
+
+@section('appendjs')
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
+    </script>
 @endsection
