@@ -16,13 +16,13 @@
             @endif
         @else
             <div class="btn-group">
-                <button type="button" class="btn dropdown-toggle btn-sm" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="background: chocolate; color: #fafad2">
+                <button type="button" class="btn dropdown-toggle btn-sm" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="background: chocolate; color: #fafad2; font-weight: bolder;">
                     {{ Auth::user()->User_FullName }}
                 </button>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#history" style="color: black;"><i class="fas fa-history"></i> History</a>
+                <div class="dropdown-menu dropdown-menu-right" style="background: #ffffe0;">
+                    <a class="dropdown-item" href="#history" style="color: brown;"><i class="fas fa-history"></i> History</a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
-                            style="color: black;"
+                            style="color: brown;"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                         <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
