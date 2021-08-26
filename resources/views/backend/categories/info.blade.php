@@ -49,8 +49,18 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="slug">Slug:</label>
-                    <input type="text" name="slug" id="slug" class="form-control" value="{{ $category->slug }}" readonly>
+                    <label for="Category_Slug">Slug:</label>
+                    <input type="text" name="Category_Slug" id="Category_Slug" class="form-control" value="{{ $category->Category_Slug }}" readonly>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Category_SystemStatus">System Status:&nbsp</label>
+                    @if($category->Category_SystemStatus == 1) <span style="color:	#0000cd"><i class="fas fa-lock-open"></i> Mở khóa</span> @endif
+                    @if($category->Category_SystemStatus == 0) <span style="color:	#cd0000"><i class="fas fa-lock"></i> Đang khóa</span> @endif
                 </div>
             </div>
         </div>

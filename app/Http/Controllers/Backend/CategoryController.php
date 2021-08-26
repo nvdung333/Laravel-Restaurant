@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Backend\CategoriesModel;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -110,14 +111,13 @@ class CategoryController extends Controller
         // Validate dữ liệu
         $validatedData = $request->validate([
             'Category_Name' => 'required',
-            'slug' => 'required',
             'Category_Img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3000',
         ]);
 
         
         // Dữ liệu request (từ view)
         $Category_Name = $request->input('Category_Name', "");
-        $slug = $request->input('slug', "");
+        $Category_Slug = Str::slug($request->input('Category_Name', ""));
         $Category_Img = $request->file('Category_Img');
         $Category_Description = $request->input('Category_Description', "");
         $Category_Parent_ID = $request->input('Category_Parent_ID', "");
@@ -130,10 +130,11 @@ class CategoryController extends Controller
         $category = new CategoriesModel();
 
         $category->Category_Name = $Category_Name;
-        $category->slug = $slug;
+        $category->Category_Slug = $Category_Slug;
         if ($Category_Img != null) { $category->Category_Img = $path_Category_Img; }
         $category->Category_Description = $Category_Description;
         $category->Category_Parent_ID = $Category_Parent_ID;
+        $category->Category_SystemStatus = 0;
         $category->created_user = auth()->user()->id;
         $category->modified_user = auth()->user()->id;
 
@@ -150,16 +151,18 @@ class CategoryController extends Controller
         // Validate dữ liệu
         $validatedData = $request->validate([
             'Category_Name' => 'required',
-            'slug' => 'required',
+            'Category_Slug' => 'required',
             'Category_Img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3000',
+            'Category_SystemStatus' => 'required',
         ]);
 
         // Dữ liệu request (từ view)
         $Category_Name = $request->input('Category_Name', "");
-        $slug = $request->input('slug', "");
+        $Category_Slug = $request->input('Category_Slug', "");
         $Category_Img = $request->file('Category_Img');
         $Category_Description = $request->input('Category_Description', "");
         $Category_Parent_ID = $request->input('Category_Parent_ID', "");
+        $Category_SystemStatus = $request->input('Category_SystemStatus', "");
 
         // Lưu file ảnh (nếu có) vào thư mục
         if ($Category_Img != null)
@@ -169,13 +172,14 @@ class CategoryController extends Controller
         $category = CategoriesModel::findorFail($id);
 
         $category->Category_Name = $Category_Name;
-        $category->slug = $slug;
+        $category->Category_Slug = $Category_Slug;
         if ($Category_Img != null) {
             Storage::delete($category->Category_Img);
             $category->Category_Img = $path_Category_Img;
         }
         $category->Category_Description = $Category_Description;
         $category->Category_Parent_ID = $Category_Parent_ID;
+        $category->Category_SystemStatus = $Category_SystemStatus;
         $category->modified_user = auth()->user()->id;
 
         // Lưu và hoàn tất

@@ -16,10 +16,11 @@ class CreateTCategoriesTable extends Migration
         Schema::create('t_categories', function (Blueprint $table) {
             $table->id();
             $table->string('Category_Name');
-            $table->string('slug')->nullable();
+            $table->string('Category_Slug')->nullable();
             $table->string('Category_Img')->nullable();
             $table->text('Category_Description')->nullable();
             $table->foreignId('Category_Parent_ID')->nullable();
+            $table->tinyInteger('Category_SystemStatus');
             $table->timestamps();
             $table->string('created_user');
             $table->string('modified_user');

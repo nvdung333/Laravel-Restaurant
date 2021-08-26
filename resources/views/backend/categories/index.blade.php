@@ -63,6 +63,7 @@
         <thead class="thead-dark">
             <tr>
                 <th>ID</th>
+                <th></th>
                 <th>Image</th>
                 <th>Category_Name</th>
                 <th>Slug</th>
@@ -75,12 +76,20 @@
                 @foreach($categories as $category)
                 <tr>
                     <th>{{ $category->id }}</th>
+                    <td style="text-align: center">
+                        @if($category->Category_SystemStatus == 1)
+                            <span style="color:	#0000cd"><i class="fas fa-lock-open"></i></span>
+                        @endif
+                        @if($category->Category_SystemStatus == 0)
+                            <span style="color:	#cd0000"><i class="fas fa-lock"></i></span>
+                        @endif
+                    </td>
                     <td>
                         <?php $category->Category_Img = str_replace("public/", "", $category->Category_Img); ?>
                         <img alt=".img" src="{{ asset("storage/$category->Category_Img") }}" style="width: 52px; height: auto" />
                     </td>
                     <td>{{ $category->Category_Name }}</td>
-                    <td>{{ $category->slug }}</td>
+                    <td>{{ $category->Category_Slug }}</td>
                     <td>
                         @foreach($parentcategories as $pacategory)
                             @if($pacategory->t1_id == $category->id)

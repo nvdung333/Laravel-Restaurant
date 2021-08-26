@@ -22,19 +22,9 @@
         
         @csrf
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="Category_Name">Name:</label>
-                    <input type="text" name="Category_Name" id="Category_Name" class="form-control" value="{{ old('Category_Name', "") }}">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="slug">Slug:</label>
-                    <input type="text" name="slug" id="slug" class="form-control" value="{{ old('slug', "") }}">
-                </div>
-            </div>
+        <div class="form-group">
+            <label for="Category_Name">Name:</label>
+            <input type="text" name="Category_Name" id="Category_Name" class="form-control" value="{{ old('Category_Name', "") }}">
         </div>
 
         <div class="form-group">
