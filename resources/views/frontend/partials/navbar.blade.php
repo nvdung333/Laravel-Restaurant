@@ -6,13 +6,11 @@
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav" id="navbar-ul">
-                <li class="nav-item"><a class="nav-link " href="#1">HOME</a></li>
-                <li class="nav-item"><a class="nav-link" href="#2">BREAD</a></li>
-                <li class="nav-item"><a class="nav-link" href="#3">RICE</a></li>
-                <li class="nav-item"><a class="nav-link" href="#4">NOODLES</a></li>
-                <li class="nav-item active"><a class="nav-link" href="#5">DESSERTS</a></li> 
-                <li class="nav-item"><a class="nav-link" href="#6">DRINKS</a></li> 
-                <li class="nav-item"><a class="nav-link" href="#7">FIND US</a></li> 
+                <li class="nav-item {{ Request::is('index') ? 'active' : '' }}"><a class="nav-link" href="{{ url("/index") }}">HOME</a></li>
+                @foreach($nav_categories as $nav_category)
+                <li class="nav-item {{ Request::is("category/$nav_category->id") ? 'active' : '' }} {{ Request::is("category/$nav_category->id/*") ? 'active' : '' }}"><a class="nav-link" href="{{ url("category/$nav_category->id/$nav_category->Category_Slug") }}">{{ $nav_category->Category_Name }}</a></li>
+                @endforeach
+                <li class="nav-item {{ Request::segment(1) === "find-us" ? 'active' : '' }}"><a class="nav-link" href="{{ url("/find-us") }}">FIND US</a></li> 
             </ul>
         </div>
     </nav>

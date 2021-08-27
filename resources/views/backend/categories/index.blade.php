@@ -20,15 +20,27 @@
     </div>
 
     <form name="searchfilter" method="get" action="{{ htmlspecialchars($_SERVER["REQUEST_URI"]) }}" style="border: 1px solid grey; border-radius: 5px; padding: 10px;">
+        
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-12">
                 <div class="form-group">
                     <label for="keyword">Tìm kiếm</label>
                     <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Search for..." value="{{ $search_keyword }}">
                 </div>
             </div>
-
-            <div class="col-md-3">
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="whereSystemStatus">Trạng thái khóa...</label>
+                    <select name="whereSystemStatus" id="whereSystemStatus" class="custom-select">
+                        <option value="">Choose...</option>
+                        <option value="1" {{ $whereSystemStatus == "1" ? "selected" : "" }}>Mở khóa</option>
+                        <option value="0" {{ $whereSystemStatus == "0" ? "selected" : "" }}>Đang khóa</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="orderby">Sắp xếp theo...</label>
                     <select name="orderby" id="orderby" class="custom-select">
@@ -38,7 +50,6 @@
                     </select>
                 </div>
             </div>
-
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="orderdir">Hướng sắp xếp...</label>
@@ -49,7 +60,6 @@
                     </select>
                 </div>
             </div>
-
             <div class="col-md-1">
                 <div class="form-group">
                     <label for="">Filter</label>

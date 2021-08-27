@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     // return view('welcome');
-    return redirect('thesite');
+    return redirect('index');
 })->name('/');
 
 Auth::routes();
@@ -96,6 +96,6 @@ Route::group(['prefix' => 'backend/user'], function()
 
 
 // Frontend
-Route::get('thesite', function() {
-    return view("frontend.test");
-});
+Route::get('index', "App\Http\Controllers\Frontend\HomepageController@index");
+Route::get('find-us', "App\Http\Controllers\Frontend\RestaurantController@index");
+Route::get('category/{id}/{slug?}', "App\Http\Controllers\Frontend\CategoryController@index");

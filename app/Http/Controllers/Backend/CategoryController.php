@@ -15,6 +15,7 @@ class CategoryController extends Controller
     public function index(Request $request) {
         
         $search_keyword = $request->query('keyword', "");
+        $whereSystemStatus = $request->query('whereSystemStatus', "");
         $order_by = $request->query('orderby', "");
         $order_dir = $request->query('orderdir', "");
 
@@ -25,12 +26,23 @@ class CategoryController extends Controller
         { $id_ParentCategories[] = $array_ParentCategory->id; }
 
         // Lệnh truy vấn gốc
-        $queryORM = CategoriesModel::where('Category_Name', 'LIKE', '%'.$search_keyword.'%');
+        $queryORM = CategoriesModel::select();
 
         // Bổ sung thêm các phần lọc cho lệnh truy vấn gốc
-        foreach ($id_ParentCategories as $id_ParentCategory)
-        { $queryORM->orwhere('Category_Parent_ID', 'LIKE', $id_ParentCategory); }
+        $queryORM->where(function ($query) use ($id_ParentCategories, $search_keyword) {
+            $query->where('Category_Name', 'LIKE', '%'.$search_keyword.'%');
+            foreach ($id_ParentCategories as $id_ParentCategory)
+            { $query->orwhere('Category_Parent_ID', 'LIKE', $id_ParentCategory); }
+        });
 
+        // Trạng thái khóa
+        if ($whereSystemStatus == "1") {
+            $queryORM->where('Category_SystemStatus', 1);
+        }
+        elseif ($whereSystemStatus == "0") {
+            $queryORM->where('Category_SystemStatus', 0);
+        }
+        // Sắp xếp hướng
         if ($order_dir == "ASC") {
             if ($order_by != "")
             { $queryORM->orderBy($order_by, 'ASC'); }
@@ -62,6 +74,7 @@ class CategoryController extends Controller
         $data['categories'] = $categories;
         $data['parentcategories'] = $parentcategories;
         $data["search_keyword"] = $search_keyword;
+        $data["whereSystemStatus"] = $whereSystemStatus;
         $data["order_by"] = $order_by;
         $data["order_dir"] = $order_dir;
 
