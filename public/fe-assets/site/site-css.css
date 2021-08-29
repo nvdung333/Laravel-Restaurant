@@ -54,12 +54,56 @@
 .navbar-nav > .nav-item > .nav-link:hover { color: #fafad2; }
 .navbar-nav > .nav-item.active { background: chocolate; }
 .navbar-nav > .nav-item.active > .nav-link { color: #fafad2; font-weight: bold; }
+.navbar > .navbar-collapse > .form-inline > input { border: 1px solid #8b8b7a; background: #ffffe0; padding: 0 5px; }
+.navbar > .navbar-collapse > .form-inline > button { border: 1px solid #8b8b7a; background: #eeeed1; color: black; }
 
 
 #content {
     background: #ffffe0;
     padding: 5px 5px;
 }
+
+
+#home-content {
+    width: 100%;
+}
+#home-content #home-content-img-center {
+    padding: 1px 2px;
+    display: flex;
+    justify-content: center;
+}
+#home-content #home-content-img-center img {
+    border: 1px solid #8b864e;
+    border-radius: 5px;
+    width: 100%;
+}
+#home-content #home-content-img-side {
+    padding: 1px;
+}
+#home-content-img-left, #home-content-img-right {
+    padding: 0px 1px;
+    display: flex;
+    justify-content: center;
+}
+#home-content #home-content-img-side img {
+    border: 1px solid #8b864e;
+    border-radius: 5px;
+    width: 100%;
+}
+#home-content #home-content-link {
+    margin: 15px 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#home-content #home-content-link a {
+    border: 1px solid #8b6914;
+    color: #ffffe0;
+    background: #cd9b1d;
+    width: 50%;
+}
+
+
 #product {
     margin: 3px;
 }
@@ -120,16 +164,26 @@
 
 #cart-btn {
     width: 100%;
-    margin-top: 45px;
+    padding: 7px 10px;
     display: flex;
     justify-content: center;
+    background: white;
+    position: sticky;
+    bottom: 0px;
 }
 #cart-btn a {
-    width: 99%;
-    background-color: brown;
+    width: 100%;
+    background-color: #008b45;
     color: white;
-    position: fixed;
-    bottom: 5px;
+}
+#cart-btn #cart-totalQuantity {
+    font-weight: bold;
+    font-size: smaller;
+    padding: 1px 3px;
+    background-color: red;
+    border-radius: 5px;
+    position: relative;
+    bottom:3px;
 }
 
 
@@ -142,6 +196,17 @@
     #product > #product-body > #product-name {
         font-size: medium;
         min-height: 3rem;
+    }
+
+    .navbar-nav > .nav-item > .nav-link {
+        margin-left: 5px
+    }
+    .navbar > .navbar-collapse > .form-inline > input {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .navbar > .navbar-collapse > .form-inline > button {
+        margin-left: 5px
     }
 
     #footer #footer-content {
@@ -172,6 +237,13 @@
     }
 
     .navbar-nav > .nav-item > .nav-link {
+        margin-left: 5px
+    }
+    .navbar > .navbar-collapse > .form-inline > input {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .navbar > .navbar-collapse > .form-inline > button {
         margin-left: 5px
     }
 

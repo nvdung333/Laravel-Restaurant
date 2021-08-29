@@ -3,7 +3,7 @@
 
         <div class="col-md-12" id="footer-content">
             <a href="{{ url("/") }}">
-                <img id="footer-logo" src="{{ asset("/storage/site_logo/logo-light.png") }}" alt="logo">
+                <img id="footer-logo" src="{{ asset("/storage/images_setting/logo-light.png") }}" alt="logo">
             </a>
             <p style="margin: 0;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. A voluptatum vel odio doloremque! Perspiciatis, eligendi! Repudiandae quaerat quo ipsum eveniet, rerum cupiditate nemo ab maxime quas, fugiat perspiciatis tenetur voluptatum.</p>
         </div>

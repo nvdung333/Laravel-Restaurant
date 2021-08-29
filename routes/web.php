@@ -98,4 +98,4 @@ Route::group(['prefix' => 'backend/user'], function()
 // Frontend
 Route::get('index', "App\Http\Controllers\Frontend\HomepageController@index");
 Route::get('find-us', "App\Http\Controllers\Frontend\RestaurantController@index");
-Route::get('category/{id}/{slug?}', "App\Http\Controllers\Frontend\CategoryController@index");
+Route::get('order/{id}/{slug?}', "App\Http\Controllers\Frontend\CategoryController@index");

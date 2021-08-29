@@ -1,8 +1,8 @@
 <div class="col-md-12" class="header" id="header">
     <div id="header-left">
         <a href="{{ url("/") }}">
-            <img id="header-logo-0" src="{{ asset("/storage/site_logo/logo-0.png") }}" alt="logo">
-            <img id="header-logo-1" src="{{ asset("/storage/site_logo/logo-dark.png") }}" alt="logo">
+            <img id="header-logo-0" src="{{ asset("/storage/images_setting/logo-0.png") }}" alt="logo">
+            <img id="header-logo-1" src="{{ asset("/storage/images_setting/logo-dark.png") }}" alt="logo">
         </a>
     </div>      
     <div id="header-right">
