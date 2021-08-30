@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div id="home-content-link">
-                <a href="#order" class="btn" role="button">
+                <a href="{{ url('search') }}" class="btn" role="button">
                     <i class="fab fa-elementor"></i>
                     <span id="home-content-link-title">ORDER</span>
                 </a>

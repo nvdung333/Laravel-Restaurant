@@ -117,18 +117,19 @@
 }
 #product > #product-body > #product-name {
     margin-bottom: 5px;
-    color: red;
+    color: black;
     font-weight: bold;
-    font-size: large;
-    min-height: 3.4rem;
+    font-size: larger;
+    min-height: 2.5rem;
 }
 #product > #product-body > #product-price {
-    color: blue;
+    color: darkgreen;
     font-weight: bold;
+    font-size: large;
 }
 #product > #product-body > #product-description {
     margin-top: 5px;
-    color: black;
+    color: #525252;
     height: 4rem;
     overflow-y: auto;
 }
@@ -193,9 +194,16 @@
     #content {
         padding: 5px 4px;
     }
+    
     #product > #product-body > #product-name {
+        font-size: large;
+        min-height: 2rem;
+    }
+    #product > #product-body > #product-price {
         font-size: medium;
-        min-height: 3rem;
+    }
+    #product > #product-body > #product-description {
+        font-size: small;
     }
 
     .navbar-nav > .nav-item > .nav-link {

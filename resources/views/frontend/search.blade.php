@@ -1,5 +1,5 @@
 @extends('frontend.layouts.main')
-@section('title', "$title")
+@section('title', "Search")
 
 @section('content')
 
@@ -38,7 +38,7 @@
         </div>
         @endforeach
     </div>
-    
+
 @endsection
 
 @section('cart-btn')

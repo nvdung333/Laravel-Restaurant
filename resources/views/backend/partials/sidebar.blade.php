@@ -71,7 +71,14 @@
             <span>Cấu hình</span></a>
     </li>
 
-    
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ url('/') }}" target="_blank">
+            <i class="fab fa-fw fa-chrome"></i>
+            <span>View website</span></a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

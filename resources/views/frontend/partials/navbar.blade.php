@@ -12,8 +12,9 @@
                 @endforeach
                 <li class="nav-item {{ Request::segment(1) === "find-us" ? 'active' : '' }}"><a class="nav-link" href="{{ url("/find-us") }}">FIND US</a></li> 
             </ul>
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
+            <form class="form-inline" method="get" action="{{ url("search") }}">
+                <?php isset($search_keyword) ? $search_keyword : $search_keyword="" ?>
+                <input name="keyword" class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search" value="{{$search_keyword}}">
                 <button class="btn my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
             </form>
         </div>
