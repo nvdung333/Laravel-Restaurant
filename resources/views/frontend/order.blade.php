@@ -1,8 +1,8 @@
 @extends('frontend.layouts.main')
-@section('title', "Search")
+@section('title', "$title")
 
 @section('content')
-    <div class="container-md" id="product-container">        
+    <div class="container-md" id="product-container">
         <div class="row no-gutters">
             
             @foreach ($products as $product)

@@ -91,6 +91,6 @@ class CategoryController extends Controller
         $data['products'] = $products;
         $data['title'] = $title;
 
-        return view('frontend.category', $data);
+        return view('frontend.order', $data);
     }
 }

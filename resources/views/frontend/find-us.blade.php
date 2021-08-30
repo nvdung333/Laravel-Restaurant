@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="container-fluid">
-        <div class="row no-gutters">
+        <div class="row no-gutters" style="padding: 15px 0px">
 
             @foreach ($areas as $area)
                 <div class="col-md-4" style="padding: 1px 2px">
