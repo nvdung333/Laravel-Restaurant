@@ -25,6 +25,7 @@
     <!-- bootstrap javascript 2 -->
     <script src="{{ asset("/fe-assets/site/vendor/bootstrap-4.6.0/js/bootstrap.min.js") }}"></script>
 
+    
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="{{ asset("/fe-assets/site/site-css.css") }}">
 </head>
