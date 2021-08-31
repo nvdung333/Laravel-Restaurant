@@ -8,4 +8,21 @@ use Illuminate\Http\Request;
 class PaymentController extends Controller
 {
     //
+
+    public function index() {
+
+        return view('frontend.payment.index');
+    }
+    
+
+    public function checkout() {
+        
+        return redirect("/payment/complete");
+    }
+
+
+    public function complete() {
+
+        return view('frontend.payment.complete');
+    }
 }

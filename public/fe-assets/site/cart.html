@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VINAKOOK</title>
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="vendor/fontawesome-free-5.15.3-web/css/all.css">
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap-4.6.0/css/bootstrap.css">
+
+    <!-- bootstrap jquery -->
+    <script src="vendor/jquery/jquery-3.6.0.slim.min.js"></script>
+
+    <!-- bootstrap javascript 1 -->
+    <script type="text/javascript" src="vendor/bootstrap-4.6.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- bootstrap popper -->
+    <script src="vendor/popper.min.js"></script>
+
+    <!-- bootstrap javascript 2 -->
+    <script src="vendor/bootstrap-4.6.0/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="site-css.css">
+</head>
+
+<body>
+
+
+    <!-- section-header&navbar -->
+    <section class="row no-gutters" id="ontopsticky">
+        <div class="col-md-12" class="header" id="header">
+            <div id="header-left">
+                <a href="index.html">
+                    <img id="header-logo-0" src="logo/lg0.png" alt="logo">
+                    <img id="header-logo-1" src="logo/lg1.png" alt="logo">
+                </a>
+            </div>
+            <div id="header-right">
+                <a href="login.html" style="color: brown; font-weight: bold" role="button">Login</a>
+                <a href="#register" style="color: brown" role="button">Register</a>
+            </div>
+        </div>
+        <div class="col-md-12" id="thenavbar">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto" id="navbar-ul">
+                        <li class="nav-item"><a class="nav-link " href="index.html">HOME</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#fastfood">FASTFOOD</a></li>
+                        <li class="nav-item"><a class="nav-link" href="order.html">NOODLES</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#drinks">DRINKS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="find-us.html">FIND US</a></li>
+                    </ul>
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
+                        <button class="btn my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </section>
+    <!-- end section-header&navbar -->
+
+
+    <!-- section-content -->
+    <section class="content" id="content">
+        <div class="container-md" id="cart-site-container">
+
+            <p id="cart-site-title">Shopping Cart</p>
+
+            <div class="table-responsive">
+                <table id="cart-site-table" class="table table-bordered">
+                    <thead id="cart-site-thead">
+                        <tr>
+                            <th>Products</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-site-tbody">
+                        <tr>
+                            <td>Phở Xào</td>
+                            <td id="cart-site-tbody-price">45000 <span>đ</span></td>
+                            <td id="cart-site-tbody-quantity">
+                                <select class="custom-select custom-select-sm" id="option1">
+                                    <script>
+                                        let option1 = "";
+                                        for (let i=0; i <=100; i++) {
+                                            let check = ""; if (i==2) { check = "selected"; }
+                                            option1 += "<option value='"+i+"'"+check+">"+i+"</option>";
+                                        }
+                                        document.getElementById("option1").innerHTML = option1;
+                                    </script>
+                                </select>
+                            </td>
+                            <td id="cart-site-tbody-total">90000 <span>đ</span></td>
+                            <td>x</td>
+                        </tr>
+                        <tr>
+                            <td>Hủ Tiếu</td>
+                            <td id="cart-site-tbody-price">40000 <span>đ</span></td>
+                            <td id="cart-site-tbody-quantity">
+                                <select class="custom-select custom-select-sm" id="option2">
+                                    <script>
+                                        let option2 = "";
+                                        for (let i=0; i <=100; i++) {
+                                            let check = ""; if (i==3) { check = "selected"; }
+                                            option2 += "<option value='"+i+"'"+check+">"+i+"</option>";
+                                        }
+                                        document.getElementById("option2").innerHTML = option2;
+                                    </script>
+                                </select>
+                            </td>
+                            <td id="cart-site-tbody-total">120000 <span>đ</span></td>
+                            <td>x</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="cart-site-cont-shp">
+                <a class="btn" href="order.html">CONTINUE SHOPPING</a>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div id="cart-site-box" class="col-md-6">
+                        <h3 id="cart-site-box-title">Cart total</h3>
+                        <div id="cart-site-box-row" class="row">
+                            <div class="col-6">
+                                <p id="cart-site-box-left">Total quantity</p>
+                            </div>
+                            <div class="col-6">
+                                <p id="cart-site-box-right">5</p>
+                            </div>
+                        </div>
+                        <div id="cart-site-box-row" class="row">
+                            <div class="col-6">
+                                <p id="cart-site-box-left">Total price</p>
+                            </div>
+                            <div class="col-6">
+                                <p id="cart-site-box-right">210000 <span>đ</span></p>
+                            </div>
+                        </div>
+                        <div id="cart-site-box-proceed">
+                            <a class="btn" href="#payment">PROCEED TO CHECKOUT</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <!-- end section-content -->
+
+
+    <!-- section-footer -->
+    <section class="footer" id="footer">
+        <div class="row no-gutters">
+
+            <div class="col-md-12" id="footer-content">
+                <a href="index.html">
+                    <img id="footer-logo" src="logo/lg2.png" alt="logo">
+                </a>
+                <p style="margin: 0;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. A voluptatum vel odio
+                    doloremque! Perspiciatis, eligendi! Repudiandae quaerat quo ipsum eveniet, rerum cupiditate nemo ab
+                    maxime quas, fugiat perspiciatis tenetur voluptatum.</p>
+            </div>
+
+            <div class="col-md-12" id="footer-bottom">
+                <p style="margin: 0">Copyright © 2021 Vinakook.</p>
+            </div>
+
+        </div>
+    </section>
+    <!-- end section-footer -->
+
+
+</body>
+
+</html>
+
+<script src="site-js.js"></script>

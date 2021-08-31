@@ -100,3 +100,15 @@ Route::get('index', "App\Http\Controllers\Frontend\HomepageController@index");
 Route::get('find-us', "App\Http\Controllers\Frontend\RestaurantController@index");
 Route::get('order/{id}/{slug?}', "App\Http\Controllers\Frontend\CategoryController@index");
 Route::get('search', "App\Http\Controllers\Frontend\SearchController@index");
+
+// Frontend Cart
+Route::get('cart', "App\Http\Controllers\Frontend\CartController@index");
+Route::post('cart/add', "App\Http\Controllers\Frontend\CartController@add");
+Route::post('cart/update', "App\Http\Controllers\Frontend\CartController@update");
+Route::post('cart/remove', "App\Http\Controllers\Frontend\CartController@remove");
+Route::post('cart/clear', "App\Http\Controllers\Frontend\CartController@clear");
+
+// Frontend Payment
+Route::get('payment', "App\Http\Controllers\Frontend\PaymentController@index");
+Route::post('payment/checkout', "App\Http\Controllers\Frontend\PaymentController@checkout");
+Route::get('payment/complete', "App\Http\Controllers\Frontend\PaymentController@complete");

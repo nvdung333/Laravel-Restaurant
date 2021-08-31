@@ -33,7 +33,7 @@
                             @endif
                         </div>
                         <p id="product-description">{{ $product->Product_Description }}</p>
-                        <a id="product-add-btn" href="#" class="btn btn-success {{ $product->Product_AvailableStatus!=2 ? 'disabled' : '' }}">Mua ngay</a>
+                        <a id="product-add-btn" href="#" class="btn btn-success {{ $product->Product_AvailableStatus!=2 ? 'disabled' : '' }}" style="{{ $product->Product_AvailableStatus!=2 ? 'visibility: hidden' : '' }}">Mua ngay</a>
                     </div>
                 </div>
             </div>

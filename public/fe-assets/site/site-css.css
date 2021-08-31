@@ -4,6 +4,18 @@
     box-sizing: border-box;
 }
 
+body { animation: Transition 0.5s; }
+#content { animation: Transition 0.9s; }
+
+@keyframes Transition {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 
 #ontopsticky {
     box-shadow: 2px 1px 5px;
@@ -103,6 +115,7 @@
     width: 50%;
 }
 
+
 #product-container {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -180,7 +193,7 @@
     background-color: #008b45;
     color: white;
 }
-#cart-btn #cart-totalQuantity {
+#cart-btn #cart-btn-totalQuantity {
     font-weight: bold;
     font-size: smaller;
     padding: 1px 3px;
@@ -188,6 +201,66 @@
     border-radius: 5px;
     position: relative;
     bottom:3px;
+}
+
+
+#cart-site-container {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+#cart-site-container #cart-site-title {
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+    color: darkgoldenrod;
+}
+#cart-site-table #cart-site-thead {
+    background: #eeeed1;
+}
+#cart-site-table #cart-site-thead tr {
+    font-size: large;
+}
+#cart-site-table #cart-site-tbody-price {
+    text-align: right;
+}
+#cart-site-table #cart-site-tbody-total {
+    text-align: right;
+    font-weight: bold;
+}
+#cart-site-container #cart-site-cont-shp {
+    padding-bottom: 15px;
+}
+#cart-site-container #cart-site-cont-shp a {
+    background: #eee8cd;
+    color: #8b8878;
+    font-weight:bold;
+}
+#cart-site-box {
+    background: #f5f5dc;
+    padding: 5px;
+}
+#cart-site-box #cart-site-box-title {
+    padding: 15px;
+}
+#cart-site-box #cart-site-box-row {
+    padding: 15px;
+}
+#cart-site-box-row #cart-site-box-left {
+    font-weight: bold;
+}
+#cart-site-box-row #cart-site-box-right {
+    text-align: right;
+    font-weight: bold;
+    color: #006400;
+}
+#cart-site-box-proceed {
+    padding: 15px;
+}
+#cart-site-box-proceed a {
+    width: 100%;
+    background: green;
+    color: #fff8dc;
+    font-weight:bold;
 }
 
 
@@ -262,7 +335,7 @@
         padding: 1px 1px 0px 1px;
     }
 
-    #cart-btn #cart-title {
+    #cart-btn #cart-btn-title {
         display: none;
     }
 }
