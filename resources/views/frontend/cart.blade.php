@@ -20,7 +20,7 @@
                 </thead>
                 <tbody id="cart-site-tbody">
                     <tr>
-                        <td>Phở Xào</td>
+                        <td rowspan="2" class="align-middle" id="cart-site-tbody-name">Phở Xào</td>
                         <td id="cart-site-tbody-price">45000 <span>đ</span></td>
                         <td id="cart-site-tbody-quantity">
                             <select class="custom-select custom-select-sm" id="option1">
@@ -30,10 +30,13 @@
                             </select>
                         </td>
                         <td id="cart-site-tbody-total">90000 <span>đ</span></td>
-                        <td>x</td>
+                        <td rowspan="2" class="align-middle">x</td>
                     </tr>
                     <tr>
-                        <td>Hủ Tiếu</td>
+                        <td colspan="3" style="font-size: 90%;"><span style="font-weight:bold;">Note: </span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</td> 
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="align-middle" id="cart-site-tbody-name">Hủ Tiếu</td>
                         <td id="cart-site-tbody-price">40000 <span>đ</span></td>
                         <td id="cart-site-tbody-quantity">
                             <select class="custom-select custom-select-sm" id="option2">
@@ -43,7 +46,10 @@
                             </select>
                         </td>
                         <td id="cart-site-tbody-total">120000 <span>đ</span></td>
-                        <td>x</td>
+                        <td rowspan="2" class="align-middle">x</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="font-size: 90%;"><span style="font-weight:bold;">Note: </span>Nemo enim ipsam voluptatem quia voluptas sit aspernat eos qui ratione</td> 
                     </tr>
                 </tbody>
             </table>

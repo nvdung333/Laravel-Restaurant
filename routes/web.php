@@ -101,6 +101,9 @@ Route::get('find-us', "App\Http\Controllers\Frontend\RestaurantController@index"
 Route::get('order/{id}/{slug?}', "App\Http\Controllers\Frontend\CategoryController@index");
 Route::get('search', "App\Http\Controllers\Frontend\SearchController@index");
 
+// Frontend jQuery
+Route::get('/openmodal/order/{id?}', "App\Http\Controllers\Frontend\SearchController@openmodal");
+
 // Frontend Cart
 Route::get('cart', "App\Http\Controllers\Frontend\CartController@index");
 Route::post('cart/add', "App\Http\Controllers\Frontend\CartController@add");

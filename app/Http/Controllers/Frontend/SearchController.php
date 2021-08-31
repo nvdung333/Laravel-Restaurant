@@ -45,4 +45,9 @@ class SearchController extends Controller
         
         return view('frontend.search', $data);
     }
+    
+    public function openmodal($id) {
+        $products = DB::table('t_products')->find($id);
+        return response()->json($products);
+    }
 }

@@ -215,9 +215,14 @@ body { animation: Transition 0.5s; }
     color: darkgoldenrod;
 }
 #cart-site-table #cart-site-thead {
-    background: #eeeed1;
+    background: #8b8b7a;
 }
 #cart-site-table #cart-site-thead tr {
+    font-size: large;
+    color: #ffffe0;
+}
+#cart-site-table #cart-site-tbody-name {
+    font-weight: bold;
     font-size: large;
 }
 #cart-site-table #cart-site-tbody-price {
@@ -231,8 +236,8 @@ body { animation: Transition 0.5s; }
     padding-bottom: 15px;
 }
 #cart-site-container #cart-site-cont-shp a {
-    background: #eee8cd;
-    color: #8b8878;
+    border: 1px solid #8b8b7a;
+    color: #8b864e;
     font-weight:bold;
 }
 #cart-site-box {

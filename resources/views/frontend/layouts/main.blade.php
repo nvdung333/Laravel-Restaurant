@@ -14,9 +14,10 @@
     
     <!-- bootstrap jquery -->
     <script src="{{ asset("/fe-assets/site/vendor/jquery/jquery-3.6.0.slim.min.js") }}"></script>
+    <script src="{{ asset("/fe-assets/site/vendor/jquery/jquery-3.6.0.min.js") }}"></script>
 
     <!-- bootstrap javascript 1 -->
-    <script type="{{ asset("/fe-assets/site/vendor/bootstrap-4.6.0/js/bootstrap.bundle.min.js") }}"></script>
+    <script src="{{ asset("/fe-assets/site/vendor/bootstrap-4.6.0/js/bootstrap.bundle.min.js") }}"></script>
 
     <!-- bootstrap popper -->
     <script src="{{ asset("/fe-assets/site/vendor/popper.min.js") }}"></script>
@@ -24,9 +25,8 @@
     <!-- bootstrap javascript 2 -->
     <script src="{{ asset("/fe-assets/site/vendor/bootstrap-4.6.0/js/bootstrap.min.js") }}"></script>
 
-    
     <!-- Custom styles for this template-->
-    <link rel="stylesheet" href="{{ asset("/fe-assets/site/site-css.css") }}">    
+    <link rel="stylesheet" href="{{ asset("/fe-assets/site/site-css.css") }}">
 </head>
 <body>
     <!-- section-header&navbar -->
