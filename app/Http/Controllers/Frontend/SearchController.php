@@ -6,11 +6,23 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
+use App\Models\Frontend\CartModel;
 
 class SearchController extends Controller
 {
     //
+    public function shareKey() {
+        $cart = new CartModel();
+        $totalItem = $cart->getTotalItem();
+        $totalQuantity = $cart->getTotalQuantity();
+        $totalPrice = $cart->getTotalPrice();
+        view()->share('totalItem', $totalItem);
+        view()->share('totalQuantity', $totalQuantity);
+        view()->share('totalPrice', $totalPrice);
+    }
+
     public function index(Request $request) {
+        $this->shareKey();
 
         $search_keyword = $request->query('keyword', "");
 
@@ -46,8 +58,4 @@ class SearchController extends Controller
         return view('frontend.search', $data);
     }
     
-    public function openmodal($id) {
-        $products = DB::table('t_products')->find($id);
-        return response()->json($products);
-    }
 }

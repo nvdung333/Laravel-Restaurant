@@ -4,7 +4,7 @@
 @section('content')
     <div class="container-md" id="product-container">
 
-        <div class="row no-gutters">           
+        <div class="row no-gutters">
             @foreach ($products as $product)
             <div class="col-md-3 col-sm-4 col-6">
                 <div class="card" id="product">
@@ -54,35 +54,41 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body"> 
-                        <form id="modalFormData" name="modalFormData" class="form-horizontal">
-                            @csrf
+
+                    <!-- STORE ITEM TO CART -->
+                    <form method="POST" action="{{ url('cart/store') }}">
+                        @csrf
+                        <div class="modal-body"> 
+                            <input type="hidden" id="sessionID" name="sessionID" value="">
+                            <input type="hidden" id="itemID" name="itemID" value="">
+                            <input type="hidden" id="itemImage" name="itemImage" value="">
                             <div class="form-group col-md-12">
-                                <label class="form-label">Name:</label>
-                                <input type="text" class="form-control" id="Product_Name" name="Product_Name" value="" readonly></input>
+                                <label class="form-label">Tên sản phẩm:</label>
+                                <input type="text" class="form-control" id="itemName" name="itemName" value="" readonly></input>
                             </div>
                             <div class="form-group col-md-12">
-                                <label class="form-label">Price:</label>
-                                <input type="text" class="form-control" id="Product_Price" name="Product_Price" value="" readonly></input>
+                                <label class="form-label">Giá sản phẩm:</label>
+                                <input type="text" class="form-control" id="itemPrice" name="itemPrice" value="" readonly></input>
                             </div>
                             <div class="form-group col-md-12">
-                                <label class="form-label">Quantity:</label>
-                                <select class="custom-select custom-select-sm" id="Product_Quantity" name="Product_Quantity">
+                                <label class="form-label">Số lượng:</label>
+                                <select class="custom-select custom-select-sm" id="itemQuantity" name="itemQuantity">
                                     @for ($i = 1; $i <= 100; $i++)
                                     <option value="{{$i}}">{{$i}}</option>
                                     @endfor
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
-                                <label class="form-label">Note:</label>
-                                <input type="text" class="form-control" id="Product_Note" name="" value="" placeholder="Type here..."></input>
+                                <label class="form-label">Ghi chú:</label>
+                                <input type="text" class="form-control" id="itemNote" name="itemNote" value="" placeholder="Type here..."></input>
                             </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="btn-save" value="">Add</button>
-                        <input type="hidden" id="Product_ID" name="Product_ID" value="">
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </form>
+                    
                 </div>
             </div>
         </div>
@@ -97,20 +103,27 @@
 @section('appendjs')
     <script type="text/javascript">
         $(document).ready(function() {
+
             // OPEN MODAL ADD TO CART
             $("body").on("click", ".open-modal", function () {
                 var id = $(this).val();
-                var url = "{{ url('/openmodal/order') }}"+"/";
+                var url = "{{ url('/cart/add') }}"+"/";
                 // console.log(id);
                 $.get(url+id, function(data) {
                     // console.log(data);
-                    $("#Product_Name").val(data.Product_Name);
-                    $("#Product_Price").val(data.Product_Price);
-                    $("#Product_Note").val("");
-                    $("#Product_ID").val(data.id);
+                    let unique = new Date();
+                    let sessionID = "id"+data.id+"session"+unique.valueOf();
+                    $("#sessionID").val(sessionID);
+                    $("#itemID").val(data.id);
+                    $("#itemImage").val(data.Product_Img);
+                    $("#itemName").val(data.Product_Name);
+                    $("#itemPrice").val(data.Product_Price);
+                    $("#itemQuantity").val(1);
+                    $("#itemNote").val("");
                     $("#CartModal").modal("show");
                 });
             });
+
         });
     </script>
 @endsection

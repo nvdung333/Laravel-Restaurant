@@ -101,17 +101,37 @@ Route::get('find-us', "App\Http\Controllers\Frontend\RestaurantController@index"
 Route::get('order/{id}/{slug?}', "App\Http\Controllers\Frontend\CategoryController@index");
 Route::get('search', "App\Http\Controllers\Frontend\SearchController@index");
 
-// Frontend jQuery
-Route::get('/openmodal/order/{id?}', "App\Http\Controllers\Frontend\SearchController@openmodal");
-
 // Frontend Cart
 Route::get('cart', "App\Http\Controllers\Frontend\CartController@index");
-Route::post('cart/add', "App\Http\Controllers\Frontend\CartController@add");
-Route::post('cart/update', "App\Http\Controllers\Frontend\CartController@update");
-Route::post('cart/remove', "App\Http\Controllers\Frontend\CartController@remove");
-Route::post('cart/clear', "App\Http\Controllers\Frontend\CartController@clear");
+Route::get('/cart/add/{id?}', "App\Http\Controllers\Frontend\CartController@add");
+Route::post('cart/store', "App\Http\Controllers\Frontend\CartController@store");
+Route::put('cart/update/{id}', "App\Http\Controllers\Frontend\CartController@update");
+Route::put('cart/remove/{id}', "App\Http\Controllers\Frontend\CartController@remove");
+Route::get('cart/clear', "App\Http\Controllers\Frontend\CartController@clear");
 
 // Frontend Payment
 Route::get('payment', "App\Http\Controllers\Frontend\PaymentController@index");
 Route::post('payment/checkout', "App\Http\Controllers\Frontend\PaymentController@checkout");
 Route::get('payment/complete', "App\Http\Controllers\Frontend\PaymentController@complete");
+
+
+// Check Session
+use Illuminate\Support\Facades\Session;
+Route::get('session', function() {
+    dump(session()->all());
+});
+
+// CheckModel
+use App\Models\Frontend\CartModel;
+Route::get('model', function(){
+    $cart = new CartModel();
+    $v1 = $cart->getTotalItem();
+    $v2 = $cart->getTotalQuantity();
+    $v3 = $cart->getTotalPrice();
+
+    echo "<pre>";
+    echo "Total item: ".$v1;
+    echo "<br>Total quantity: ".$v2;
+    echo "<br>Total price: ".$v3;
+    echo "</pre>";
+});

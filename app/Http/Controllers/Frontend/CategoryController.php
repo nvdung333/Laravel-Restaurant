@@ -6,12 +6,23 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
+use App\Models\Frontend\CartModel;
 
 class CategoryController extends Controller
 {
     //
+    public function shareKey() {
+        $cart = new CartModel();
+        $totalItem = $cart->getTotalItem();
+        $totalQuantity = $cart->getTotalQuantity();
+        $totalPrice = $cart->getTotalPrice();
+        view()->share('totalItem', $totalItem);
+        view()->share('totalQuantity', $totalQuantity);
+        view()->share('totalPrice', $totalPrice);
+    }
+
     public function index($id, $slug=null) {
-        
+        $this->shareKey();
         $query = DB::table('t_categories')->find($id);
         if ($query == null) {
             abort (404);

@@ -223,13 +223,19 @@ body { animation: Transition 0.5s; }
 }
 #cart-site-table #cart-site-tbody-name {
     font-weight: bold;
-    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: underline;
+    margin-bottom: 3px;
+}
+#cart-site-table #cart-site-tbody-img {
+    width: 7.5rem;
+    height: 5.0rem;
 }
 #cart-site-table #cart-site-tbody-price {
-    text-align: right;
+    text-align: left;
 }
 #cart-site-table #cart-site-tbody-total {
-    text-align: right;
+    text-align: left;
     font-weight: bold;
 }
 #cart-site-container #cart-site-cont-shp {
