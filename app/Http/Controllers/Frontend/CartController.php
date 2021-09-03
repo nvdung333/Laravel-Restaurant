@@ -44,8 +44,12 @@ class CartController extends Controller
     public function store(Request $request) {
         $cart = new CartModel();
         $dataReq = $request->all();
-        $cart->storeCart($dataReq);        
-        return redirect('cart');
+        $item = $cart->storeCart($dataReq);
+        $data=[];
+        $data['item'] = $item;
+        $data['totalQuantity']=$cart->getTotalQuantity();
+        $data['totalPrice']=$cart->getTotalPrice();
+        return Response::json($data);
     }
 
 

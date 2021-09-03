@@ -78,6 +78,7 @@ class CartModel extends Model
         $cart = Session::get('cart');
         $cart[$id] = $items;
         Session::put('cart', $cart);
+        return $cart[$id];
     }
 
 

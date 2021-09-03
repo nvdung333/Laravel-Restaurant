@@ -79,64 +79,60 @@
 
             <div class="table-responsive">
                 <table id="cart-site-table" class="table table-bordered">
-                    <thead id="cart-site-thead">
-                        <tr>
-                            <th>Products</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th></th>
-                        </tr>
-                    </thead>
                     <tbody id="cart-site-tbody">
                         <tr>
-                            <td rowspan="2" class="align-middle" id="cart-site-tbody-name">Phở Xào</td>
-                            <td id="cart-site-tbody-price">45000 <span>đ</span></td>
-                            <td id="cart-site-tbody-quantity">
-                                <select class="custom-select custom-select-sm" id="option1">
+                            <td>
+                                <img id="cart-site-tbody-img" src="" alt="">
+                            </td>
+                            <td>
+                                <p id="cart-site-tbody-name">Phở Xào</p>
+                                <p id="cart-site-tbody-price"><span>45000 VNĐ</span></p>
+                                <p id="cart-site-tbody-qtt-label">Quantity:</p>
+                                <select class="custom-select custom-select-sm" style="background-color: #fff8dc; width:max-content" id="option1">
                                     <script>
                                         let option1 = "";
                                         for (let i=1; i <=100; i++) {
                                             let check = ""; if (i==2) { check = "selected"; }
-                                            option1 += "<option value='"+i+"'"+check+">"+i+"</option>";
+                                            option1 += "<option style='background-color: #fff8dc' value='"+i+"'"+check+">"+i+"</option>";
                                         }
                                         document.getElementById("option1").innerHTML = option1;
-                                    </script>
+                                        </script>
                                 </select>
+                                <p id="cart-site-tbody-total">Total: <span>90000 VNĐ</span></p>
+                                <p id="cart-site-tbody-note">Note: <span>Nhiều phở, ít hành</span></p>
                             </td>
-                            <td id="cart-site-tbody-total">90000 <span>đ</span></td>
-                            <td rowspan="2" class="align-middle">x</td>
+                            <td style="text-align: center; vertical-align: middle;"><a class="btn btn-warning" href="#RemoveItem">X</a></td>
                         </tr>
                         <tr>
-                            <td colspan="3" style="font-size: 90%;"><span style="font-weight:bold;">Note: </span>Nhiều phở, ít hành</td> 
-                        </tr>
-                        <tr>
-                            <td rowspan="2" class="align-middle" id="cart-site-tbody-name">Hủ Tiếu</td>
-                            <td id="cart-site-tbody-price">40000 <span>đ</span></td>
-                            <td id="cart-site-tbody-quantity">
-                                <select class="custom-select custom-select-sm" id="option2">
+                            <td>
+                                <img id="cart-site-tbody-img" src="" alt="">
+                            </td>
+                            <td>
+                                <p id="cart-site-tbody-name">Hủ Tiếu</p>
+                                <p id="cart-site-tbody-price"><span>40000 VNĐ</span></p>
+                                <p id="cart-site-tbody-qtt-label">Quantity:</p>
+                                <select class="custom-select custom-select-sm" style="background-color: #fff8dc; width:max-content" id="option2">
                                     <script>
                                         let option2 = "";
                                         for (let i=1; i <=100; i++) {
                                             let check = ""; if (i==3) { check = "selected"; }
-                                            option2 += "<option value='"+i+"'"+check+">"+i+"</option>";
+                                            option2 += "<option style='background-color: #fff8dc' value='"+i+"'"+check+">"+i+"</option>";
                                         }
                                         document.getElementById("option2").innerHTML = option2;
-                                    </script>
+                                        </script>
                                 </select>
+                                <p id="cart-site-tbody-total">Total: <span>120000 VNĐ</span></p>
+                                <p id="cart-site-tbody-note">Note: <span>Nhiều hủ tiếu, không gan</span></p>
                             </td>
-                            <td id="cart-site-tbody-total">120000 <span>đ</span></td>
-                            <td rowspan="2" class="align-middle">x</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" style="font-size: 90%;"><span style="font-weight:bold;">Note: </span>Nhiều hủ tiếu, không gan</td> 
+                            <td style="text-align: center; vertical-align: middle;"><a class="btn btn-warning" href="#RemoveItem">X</a></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <div id="cart-site-cont-shp">
-                <a class="btn" href="order.html">CONTINUE SHOPPING</a>
+            <div id="cart-site-opt">
+                <a id="cart-site-opt-continue" class="btn" href="order.html">CONTINUE SHOPPING</a>
+                <a class="btn btn-danger" href="#ClearCart">CLEAR ALL</a>
             </div>
 
             <div class="container">

@@ -56,7 +56,7 @@
                     </div>
 
                     <!-- STORE ITEM TO CART -->
-                    <form method="POST" action="{{ url('cart/store') }}">
+                    <form id="modalFormData" method="POST" action="{{ url('cart/store') }}">
                         @csrf
                         <div class="modal-body"> 
                             <input type="hidden" id="sessionID" name="sessionID" value="">
@@ -85,7 +85,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="button" class="btn btn-primary StoreItem">Add</button>
                         </div>
                     </form>
                     
@@ -121,6 +121,39 @@
                     $("#itemQuantity").val(1);
                     $("#itemNote").val("");
                     $("#CartModal").modal("show");
+                });
+            });
+
+            // STORE ITEM
+            $("body").on("click", ".StoreItem", function () {
+                var token = "{{ csrf_token() }}";
+                var type = "POST";
+                var formData = {
+                    sessionID: $("#sessionID").val(),
+                    itemID: $("#itemID").val(),
+                    itemImage: $("#itemImage").val(),
+                    itemName: $("#itemName").val(),
+                    itemPrice: parseFloat($("#itemPrice").val()),
+                    itemQuantity: parseInt($("#itemQuantity").val()),
+                    itemNote: $("#itemNote").val(),
+                    _token: token,
+                }
+                var ajaxurl = "{{ url('/cart/store/') }}";
+                $.ajax({
+                    type: type,
+                    url: ajaxurl,
+                    data: formData,
+                    dataType: "json",
+                    success: function(data) {
+                        alert("Thêm thành công! Vui lòng kiểm tra giỏ hàng!");
+                        console.log(data.item);
+                        $("#cart-btn-totalQuantity").html("");
+                        $("#cart-btn-totalQuantity").append(data.totalQuantity);
+                        $("#cart-btn-totalPrice").html("");
+                        $("#cart-btn-totalPrice").append(data.totalPrice);
+                        $("#modalFormData").trigger("reset");
+                        $("#CartModal").modal("hide");
+                    }
                 });
             });
 

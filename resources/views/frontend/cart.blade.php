@@ -9,52 +9,54 @@
 
         <div class="table-responsive">
             <table id="cart-site-table" class="table table-bordered">
-                <thead id="cart-site-thead">
-                    <tr>
-                        <th>Products</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
-                        <th></th>
-                    </tr>
-                </thead>
                 <tbody id="cart-site-tbody">
+
+
+                    
                     @if (isset($items))
                         @foreach ($items as $item)
                             <tr>
-                                <td rowspan="2">
-                                    <p id="cart-site-tbody-name">{{$item['itemName']}}</p>
-                                    <div id="cart-site-tbody-img">
-                                        <?php $itemImage = str_replace("public/", "", $item['itemImage']); ?>
-                                        <img class="card-img-top" src="{{ asset("/storage/$itemImage") }}" alt="item_img">
-                                    </div>
+                                <td>
+                                    <?php $itemImage = str_replace("public/", "", $item['itemImage']); ?>
+                                    <img id="cart-site-tbody-img" src="{{asset("/storage/$itemImage")}}" alt="">
                                 </td>
-                                <td id="cart-site-tbody-price">{{$item['itemPrice']}} <span>đ</span></td>
-                                <td id="cart-site-tbody-quantity">
-                                    <select class="custom-select custom-select-sm" id="QttSelOpt" data-sessionID="{{$item['sessionID']}}">
+                                <td>
+                                    <p id="cart-site-tbody-name">{{$item['itemName']}}</p>
+                                    <p id="cart-site-tbody-price"><span>{{$item['itemPrice']}} VNĐ</span></p>
+                                    <p id="cart-site-tbody-qtt-label">Quantity:</p>
+                                    <select class="custom-select custom-select-sm"
+                                        style="background-color: #fff8dc; width:max-content"
+                                        id="QttSelOpt" data-sessionID="{{$item['sessionID']}}">
                                         @for ($i = 1; $i <= 100; $i++)
-                                        <option value="{{$i}}" {{$i==$item['itemQuantity'] ? "selected" : ""}}>{{$i}}</option>
+                                        <option style="background-color: #fff8dc" value="{{$i}}" {{$i==$item['itemQuantity'] ? "selected" : ""}}>{{$i}}</option>
                                         @endfor
                                     </select>
+                                    <p id="cart-site-tbody-total">Total: <span>{{(float)$item['itemPrice'] * (int)$item['itemQuantity']}} <u>đ</u></span></p>
+                                    <p id="cart-site-tbody-note">Note: <span>{{$item['itemNote']}}</span></p>
                                 </td>
-                                <td id="cart-site-tbody-total">{{(float)$item['itemPrice'] * (int)$item['itemQuantity']}} <span>đ</span></td>
                                 <!-- REMOVE ITEM FROM CART -->
-                                <td><button class="btn btn-warning btn-sm RemoveItem" data-sessionID="{{$item['sessionID']}}">X</button></td>
+                                <td style="text-align: center; vertical-align: middle;">
+                                    <button
+                                        class="btn btn-warning RemoveItem"
+                                        data-sessionID="{{$item['sessionID']}}">
+                                        X
+                                    </button>
+                                </td>
                                 <!-- end -->
-                            </tr>
-                            <tr>
-                                <td colspan="4" style="font-size: 90%;"><span style="font-weight:bold;">Note: </span>{{$item['itemNote']}}</td> 
                             </tr>
                         @endforeach
                     @endif
+
+
+
                 </tbody>
             </table>
         </div>
 
-        <div id="cart-site-cont-shp">
-            <a class="btn" href="{{ url('search') }}">CONTINUE SHOPPING</a>
+        <div id="cart-site-opt">
+            <a id="cart-site-opt-continue" class="btn" href="{{ url('search') }}">CONTINUE SHOPPING</a>
             <!-- CLEAR CART -->
-            <a class="btn btn-danger" style="color: white;" href="{{ url('/cart/clear/') }}">CLEAR ALL</a>
+            <a class="btn btn-danger" href="{{ url('/cart/clear/') }}">CLEAR ALL</a>
             <!-- end -->
         </div>
 
@@ -83,7 +85,7 @@
                             <p id="cart-site-box-left">Total price</p>
                         </div>
                         <div class="col-6">
-                            <p id="cart-site-box-right">{{$totalPrice}} <span>đ</span></p>
+                            <p id="cart-site-box-right">{{$totalPrice}}<span> <u>đ</u></span></p>
                         </div>
                     </div>
                     <div id="cart-site-box-proceed">

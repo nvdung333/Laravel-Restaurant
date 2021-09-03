@@ -6,7 +6,7 @@
                 <span id="cart-btn-title"> Xem giỏ hàng</span>
                 <span id="cart-btn-totalQuantity">{{$totalQuantity}}</span>
             </div>
-            <div class="col-6"><span id="cart-btn-totalPrice">{{$totalPrice}} VNĐ</span></div>
+            <div class="col-6"><span id="cart-btn-totalPrice">{{$totalPrice}}</span> VNĐ</div>
         </div>
     </a>
 </div>

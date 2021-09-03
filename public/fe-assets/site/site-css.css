@@ -214,34 +214,47 @@ body { animation: Transition 0.5s; }
     font-weight: bold;
     color: darkgoldenrod;
 }
-#cart-site-table #cart-site-thead {
-    background: #8b8b7a;
+#cart-site-table #cart-site-tbody #cart-site-tbody-img {
+    width: 10.5rem;
+    height: 7.0rem;
 }
-#cart-site-table #cart-site-thead tr {
-    font-size: large;
-    color: #ffffe0;
-}
-#cart-site-table #cart-site-tbody-name {
+#cart-site-table #cart-site-tbody #cart-site-tbody-name {
+    margin-bottom: 0px;
+    color: darkslateblue;
     font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 135%;
+}
+#cart-site-table #cart-site-tbody #cart-site-tbody-price {
+    margin-bottom: 11px;
+}
+#cart-site-table #cart-site-tbody #cart-site-tbody-price>span {
+    color: orangered;
+    font-weight: bold;
+    font-size: 86%;
     text-decoration: underline;
+}
+#cart-site-table #cart-site-tbody #cart-site-tbody-qtt-label {
+    margin-bottom: 5px;
+}
+#cart-site-table #cart-site-tbody #cart-site-tbody-total {
+    margin-top: 12px;
+    margin-bottom: 11px;
+}
+#cart-site-table #cart-site-tbody #cart-site-tbody-total>span {
+    color: darkgreen;
+    font-weight:bold;
+}
+#cart-site-table #cart-site-tbody #cart-site-tbody-note {
+    font-size: 86%;
     margin-bottom: 3px;
 }
-#cart-site-table #cart-site-tbody-img {
-    width: 7.5rem;
-    height: 5.0rem;
-}
-#cart-site-table #cart-site-tbody-price {
-    text-align: left;
-}
-#cart-site-table #cart-site-tbody-total {
-    text-align: left;
+#cart-site-table #cart-site-tbody #cart-site-tbody-note>span {
     font-weight: bold;
 }
-#cart-site-container #cart-site-cont-shp {
+#cart-site-container #cart-site-opt {
     padding-bottom: 15px;
 }
-#cart-site-container #cart-site-cont-shp a {
+#cart-site-container #cart-site-opt #cart-site-opt-continue {
     border: 1px solid #8b8b7a;
     color: #8b864e;
     font-weight:bold;
@@ -348,5 +361,10 @@ body { animation: Transition 0.5s; }
 
     #cart-btn #cart-btn-title {
         display: none;
+    }
+
+    #cart-site-table #cart-site-tbody #cart-site-tbody-img {
+        width: 5.0rem;
+        height: 3.2rem;
     }
 }
