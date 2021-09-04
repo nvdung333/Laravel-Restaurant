@@ -75,7 +75,10 @@
     <section class="content" id="content">
         <div class="container-md" id="cart-site-container">
 
-            <p id="cart-site-title">Shopping Cart</p>
+            <div id="cart-site-title">
+                <p id="cart-site-title-main">Shopping Cart</p>
+                <p id="cart-site-title-sub">(Lưu ý: Đăng nhập để theo dõi đơn đặt hàng)</p>
+            </div>
 
             <div class="table-responsive">
                 <table id="cart-site-table" class="table table-bordered">
@@ -86,19 +89,19 @@
                             </td>
                             <td>
                                 <p id="cart-site-tbody-name">Phở Xào</p>
-                                <p id="cart-site-tbody-price"><span>45000 VNĐ</span></p>
+                                <p id="cart-site-tbody-price"><span>45000&nbspVNĐ</span></p>
                                 <p id="cart-site-tbody-qtt-label">Quantity:</p>
-                                <select class="custom-select custom-select-sm" style="background-color: #fff8dc; width:max-content" id="option1">
+                                <select class="custom-select custom-select-sm" style="background-color: #fff8dc; font-weight: bold; width:max-content" id="option1">
                                     <script>
                                         let option1 = "";
                                         for (let i=1; i <=100; i++) {
                                             let check = ""; if (i==2) { check = "selected"; }
-                                            option1 += "<option style='background-color: #fff8dc' value='"+i+"'"+check+">"+i+"</option>";
+                                            option1 += "<option value='"+i+"'"+check+">"+i+"</option>";
                                         }
                                         document.getElementById("option1").innerHTML = option1;
                                         </script>
                                 </select>
-                                <p id="cart-site-tbody-total">Total: <span>90000 VNĐ</span></p>
+                                <p id="cart-site-tbody-total">Total: <span>90000&nbspVNĐ</span></p>
                                 <p id="cart-site-tbody-note">Note: <span>Nhiều phở, ít hành</span></p>
                             </td>
                             <td style="text-align: center; vertical-align: middle;"><a class="btn btn-warning" href="#RemoveItem">X</a></td>
@@ -109,19 +112,19 @@
                             </td>
                             <td>
                                 <p id="cart-site-tbody-name">Hủ Tiếu</p>
-                                <p id="cart-site-tbody-price"><span>40000 VNĐ</span></p>
+                                <p id="cart-site-tbody-price"><span>40000&nbspVNĐ</span></p>
                                 <p id="cart-site-tbody-qtt-label">Quantity:</p>
-                                <select class="custom-select custom-select-sm" style="background-color: #fff8dc; width:max-content" id="option2">
+                                <select class="custom-select custom-select-sm" style="background-color: #fff8dc; font-weight: bold; width:max-content" id="option2">
                                     <script>
                                         let option2 = "";
                                         for (let i=1; i <=100; i++) {
                                             let check = ""; if (i==3) { check = "selected"; }
-                                            option2 += "<option style='background-color: #fff8dc' value='"+i+"'"+check+">"+i+"</option>";
+                                            option2 += "<option value='"+i+"'"+check+">"+i+"</option>";
                                         }
                                         document.getElementById("option2").innerHTML = option2;
                                         </script>
                                 </select>
-                                <p id="cart-site-tbody-total">Total: <span>120000 VNĐ</span></p>
+                                <p id="cart-site-tbody-total">Total: <span>120000&nbspVNĐ</span></p>
                                 <p id="cart-site-tbody-note">Note: <span>Nhiều hủ tiếu, không gan</span></p>
                             </td>
                             <td style="text-align: center; vertical-align: middle;"><a class="btn btn-warning" href="#RemoveItem">X</a></td>
@@ -152,11 +155,11 @@
                                 <p id="cart-site-box-left">Total price</p>
                             </div>
                             <div class="col-6">
-                                <p id="cart-site-box-right">210000 <span>đ</span></p>
+                                <p id="cart-site-box-right">210000&nbsp<span>đ</span></p>
                             </div>
                         </div>
                         <div id="cart-site-box-proceed">
-                            <a class="btn" href="#payment">PROCEED TO CHECKOUT</a>
+                            <a class="btn" href="payment.html">PROCEED TO CHECKOUT</a>
                         </div>
                     </div>
                 </div>

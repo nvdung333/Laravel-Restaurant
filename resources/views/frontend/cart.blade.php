@@ -2,17 +2,16 @@
 @section('title', "Cart")
 
 @section('content')
-
     <div class="container-md" id="cart-site-container">
 
-        <p id="cart-site-title">Shopping Cart</p>
+        <div id="cart-site-title">
+            <p id="cart-site-title-main">Shopping Cart</p>
+            <p id="cart-site-title-sub">(Lưu ý: Đăng nhập để theo dõi đơn đặt hàng)</p>
+        </div>
 
         <div class="table-responsive">
             <table id="cart-site-table" class="table table-bordered">
                 <tbody id="cart-site-tbody">
-
-
-                    
                     @if (isset($items))
                         @foreach ($items as $item)
                             <tr>
@@ -22,16 +21,16 @@
                                 </td>
                                 <td>
                                     <p id="cart-site-tbody-name">{{$item['itemName']}}</p>
-                                    <p id="cart-site-tbody-price"><span>{{$item['itemPrice']}} VNĐ</span></p>
+                                    <p id="cart-site-tbody-price"><span>{{$item['itemPrice']}}&nbspVNĐ</span></p>
                                     <p id="cart-site-tbody-qtt-label">Quantity:</p>
                                     <select class="custom-select custom-select-sm"
-                                        style="background-color: #fff8dc; width:max-content"
+                                        style="background-color: #fff8dc; font-weight: bold; width:max-content"
                                         id="QttSelOpt" data-sessionID="{{$item['sessionID']}}">
                                         @for ($i = 1; $i <= 100; $i++)
-                                        <option style="background-color: #fff8dc" value="{{$i}}" {{$i==$item['itemQuantity'] ? "selected" : ""}}>{{$i}}</option>
+                                        <option value="{{$i}}" {{$i==$item['itemQuantity'] ? "selected" : ""}}>{{$i}}</option>
                                         @endfor
                                     </select>
-                                    <p id="cart-site-tbody-total">Total: <span>{{(float)$item['itemPrice'] * (int)$item['itemQuantity']}} <u>đ</u></span></p>
+                                    <p id="cart-site-tbody-total">Total: <span>{{(float)$item['itemPrice'] * (int)$item['itemQuantity']}}&nbspVNĐ</span></p>
                                     <p id="cart-site-tbody-note">Note: <span>{{$item['itemNote']}}</span></p>
                                 </td>
                                 <!-- REMOVE ITEM FROM CART -->
@@ -46,9 +45,6 @@
                             </tr>
                         @endforeach
                     @endif
-
-
-
                 </tbody>
             </table>
         </div>
@@ -85,7 +81,7 @@
                             <p id="cart-site-box-left">Total price</p>
                         </div>
                         <div class="col-6">
-                            <p id="cart-site-box-right">{{$totalPrice}}<span> <u>đ</u></span></p>
+                            <p id="cart-site-box-right">{{$totalPrice}}<span>&nbsp<u>đ</u></span></p>
                         </div>
                     </div>
                     <div id="cart-site-box-proceed">
@@ -96,7 +92,6 @@
         </div>
 
     </div>
-
 @endsection
 
 @section('appendjs')
