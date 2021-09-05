@@ -66,6 +66,9 @@ body { animation: Transition 0.5s; }
 .navbar-nav > .nav-item > .nav-link:hover { color: #fafad2; }
 .navbar-nav > .nav-item.active { background: chocolate; }
 .navbar-nav > .nav-item.active > .nav-link { color: #fafad2; font-weight: bold; }
+.navbar-nav > .nav-item.dropdown > .dropdown-menu { background-color: #fafad2; }
+.navbar-nav > .nav-item.dropdown > .dropdown-menu > .dropdown-item:hover { background-color: chocolate; color: #fafad2; }
+.navbar-nav > .nav-item.dropdown > .dropdown-menu > .dropdown-item.active { background-color: chocolate; color: #fafad2; }
 .navbar > .navbar-collapse > .form-inline > input { border: 1px solid #8b8b7a; background: #ffffe0; padding: 0 5px; }
 .navbar > .navbar-collapse > .form-inline > button { border: 1px solid #8b8b7a; background: #eeeed1; color: black; }
 

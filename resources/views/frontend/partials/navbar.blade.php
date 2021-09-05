@@ -10,7 +10,15 @@
                 @foreach($nav_categories as $nav_category)
                 <li class="nav-item {{ Request::is("order/$nav_category->id") ? 'active' : '' }} {{ Request::is("order/$nav_category->id/*") ? 'active' : '' }}"><a class="nav-link" href="{{ url("order/$nav_category->id/$nav_category->Category_Slug") }}">{{ $nav_category->Category_Name }}</a></li>
                 @endforeach
-                <li class="nav-item {{ Request::segment(1) === "find-us" ? 'active' : '' }}"><a class="nav-link" href="{{ url("/find-us") }}">FIND US</a></li> 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
+                        INFORMATION
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item {{ Request::segment(1) === "find-us" ? 'active' : '' }}" href="{{ url("/find-us") }}">FIND US</a>
+                        <a class="dropdown-item" href="#tracking">ORDER TRACKING</a>
+                    </div>
+                </li>
             </ul>
             <form class="form-inline" method="get" action="{{ url("search") }}">
                 <?php isset($search_keyword) ? $search_keyword : $search_keyword="" ?>

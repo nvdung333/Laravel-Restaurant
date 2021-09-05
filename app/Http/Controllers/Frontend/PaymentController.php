@@ -15,7 +15,7 @@ use App\Models\Backend\OrderDetailsModel;
 
 class PaymentController extends Controller
 {
-    //
+    // Xác nhận thông tin order
     public function index() {
 
         $stores = DB::table('t_restaurants')
@@ -45,7 +45,7 @@ class PaymentController extends Controller
     }
     
 
-    //
+    // Lưu thông tin order vào Database
     public function checkout(Request $req) {
         
         // Validate dữ liệu
@@ -127,11 +127,13 @@ class PaymentController extends Controller
     }
 
 
-    //
+    // Hoàn tất order
     public function complete() {
 
+        // Nhận dữ liệu xác nhận
         $dataRaw=session()->get('data');
 
+        // Đưa dữ liệu xác nhận lên view
         if (isset($dataRaw)) {
             $checkcomplete = $dataRaw['complete'];
             $code = $dataRaw['code'];
@@ -140,9 +142,11 @@ class PaymentController extends Controller
             $data['checkcomplete'] = $checkcomplete;
             $data['code'] = $code;
 
+            // Gửi dữ liệu tới view
             return view('frontend.payment.complete', $data);
         }
 
+        // View trong trường hợp không có dữ liệu xác nhận
         return view('frontend.payment.complete');
     }
 }
