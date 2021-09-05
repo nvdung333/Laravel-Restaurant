@@ -16,7 +16,7 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item {{ Request::segment(1) === "find-us" ? 'active' : '' }}" href="{{ url("/find-us") }}">FIND US</a>
-                        <a class="dropdown-item" href="#tracking">ORDER TRACKING</a>
+                        <a class="dropdown-item {{ Request::segment(1) === "track" ? 'active' : '' }}" href="{{ url("/track") }}">ORDER TRACKING</a>
                     </div>
                 </li>
             </ul>

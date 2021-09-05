@@ -406,6 +406,22 @@ body { animation: Transition 0.5s; }
 }
 
 
+#track-container {
+    padding: 30px 12px;
+}
+#track-form {
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 15px 19px;
+}
+#track-form .form-control { 
+    background-color: #ffffea;
+}
+#track-table {
+    margin-top: 15px;
+}
+
+
 
 /* sm */
 @media screen and (max-width: 767.89px) {
@@ -426,6 +442,10 @@ body { animation: Transition 0.5s; }
 
     .navbar-nav > .nav-item > .nav-link {
         margin-left: 5px
+    }
+    .navbar > .navbar-collapse > .form-inline {
+        background-color: wheat;
+        padding: 8px 0px;
     }
     .navbar > .navbar-collapse > .form-inline > input {
         margin-left: 5px;
