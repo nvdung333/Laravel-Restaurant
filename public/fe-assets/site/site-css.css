@@ -409,15 +409,15 @@ body { animation: Transition 0.5s; }
 #track-container {
     padding: 30px 12px;
 }
-#track-form {
+#track-container #track-form {
     border: 1px solid grey;
     border-radius: 5px;
     padding: 15px 19px;
 }
-#track-form .form-control { 
+#track-container #track-form .form-control { 
     background-color: #ffffea;
 }
-#track-table {
+#track-container #track-table-info {
     margin-top: 15px;
 }
 

@@ -64,7 +64,7 @@
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="find-us.html">FIND US</a>
-                                <a class="dropdown-item" href="track.html">ORDER TRACKING</a>
+                                <a class="dropdown-item active" href="track.html">ORDER TRACKING</a>
                             </div>
                         </li>
                     </ul>
@@ -81,15 +81,104 @@
 
     <!-- section-content -->
     <section class="content" id="content">
-        <div class="container" id="completed-container">
-            <div id="completed-message">
-                <p id="completed-message-main">ĐẶT HÀNG THÀNH CÔNG!</p>
-                <p id="completed-message-body">
-                    Chúng tôi sẽ liên hệ với bạn sớm nhất.
-                    Để có thể theo dõi đơn đặt hàng, vui lòng lưu lại mã theo dõi dưới đây:
-                </p>
-                <span id="completed-message-code">XXXXXX-9876-5432-1100</span>
-            </div>
+        <div class="container" id="track-container">
+
+            <form id="track-form" method="" action="#">
+                <div class="row">
+                    <div class="col-sm-11">
+                        <div class="form-group">
+                            <label for="keyword">Tracking code:</label>
+                            <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Type here..." value="XXXXXX-9876-5432-1100">
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="form-group">
+                            <label for="">Track</label>
+                            <div><button class="btn" style="background-color: #5a5c69; color: white;"><i class="fas fa-search"></i></button></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <table id="track-table-info" class="table table-bordered">
+                <tr>
+                    <th>Tracking Code</th>
+                    <th>XXXXXX-9876-5432-1100</th>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>
+                        Giao nhận xong
+                    </td>
+                </tr>
+                <tr>
+                    <th>Restaurant</th>
+                    <td>Vinakook ...</td>
+                </tr>
+                <tr>
+                    <th>Total Item</th>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <th>Total Quantity</th>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <th>Total Price</th>
+                    <td>210000</td>
+                </tr>
+                <tr>
+                    <th>Order Note</th>
+                    <td>abcdefghijklmnopqrstuvwxyz</td>
+                </tr>
+                <tr>
+                    <th>Time Request</th>
+                    <td>2021-05-01 23:29:22</td>
+                </tr>
+                <tr>
+                    <th>Time Accept</th>
+                    <td>2021-05-01 23:33:22</td>
+                </tr>
+                <tr>
+                    <th>Time Complete</th>
+                    <td>2021-05-01 23:39:22</td>
+                </tr>
+                <tr>
+                    <th>Time Receive</th>
+                    <td>2021-05-01 23:59:22</td>
+                </tr>
+                <tr>
+                    <th>Time Return</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Time Cancel</th>
+                    <td></td>
+                </tr>
+            </table>
+
+            <h3 style="border-bottom: 1px solid darkgreen; padding-bottom: 12px; color: darkgreen;">Order details</h3>
+            <table class="table table-bordered table-sm">
+                <tbody style="color: darkolivegreen">
+                    <tr>
+                        <td>
+                            <label style="font-size: large"><i class="far fa-sticky-note"></i> <b>Phở Xào (x2)</b></label><br>
+                            <label>- Price: <b>45000</b></label><br>
+                            <label>- Total Price: <b>90000</b></label><br>
+                            <label>- Detail Note: <b>Nhiều phở, ít hành</b></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label style="font-size: large"><i class="far fa-sticky-note"></i> <b>Hủ Tiếu (x3)</b></label><br>
+                            <label>- Price: <b>40000</b></label><br>
+                            <label>- Total Price: <b>120000</b></label><br>
+                            <label>- Detail Note: <b>Nhiều hủ tiếu, không gan</b></label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    
         </div>
     </section>
     <!-- end section-content -->

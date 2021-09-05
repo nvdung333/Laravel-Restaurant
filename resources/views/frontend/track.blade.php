@@ -23,7 +23,7 @@
         </form>
 
         @if (isset($order) && $order!=null)
-            <table id="track-table" class="table table-bordered">
+            <table id="track-table-info" class="table table-bordered">
                 <tr>
                     <th>Tracking Code</th>
                     <th>{{ $order->Order_TrackingCode }}</th>
@@ -42,10 +42,6 @@
                 <tr>
                     <th>Restaurant</th>
                     <td>{{ $order->Order_RestaurantName }}</td>
-                </tr>
-                <tr>
-                    <th>Restaurant Staff</th>
-                    <td>{{ $order->Restaurant_Staff }}</td>
                 </tr>
                 <tr>
                     <th>Total Item</th>
@@ -97,7 +93,10 @@
                     @foreach ($orderdetails as $orderdetail)
                     <tr>
                         <td>
-                            <h5>{{ $orderdetail->OrderDetail_ProductName }} (x{{$orderdetail->OrderDetail_Quantity}})</h5>
+                            <label style="font-size: large">
+                                <i class="far fa-sticky-note"></i>
+                                <b>{{ $orderdetail->OrderDetail_ProductName }} (x{{$orderdetail->OrderDetail_Quantity}})</b>
+                            </label><br>
                             <label>- Price: <b>{{ $orderdetail->OrderDetail_ProductPrice }}</b></label><br>
                             <label>- Total Price: <b>{{ $orderdetail->OrderDetail_TotalPrice }}</b></label><br>
                             <label>- Detail Note: <b>{{ $orderdetail->OrderDetail_Note }}</b></label>
