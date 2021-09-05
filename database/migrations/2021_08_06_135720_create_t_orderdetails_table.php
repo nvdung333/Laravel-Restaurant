@@ -18,13 +18,14 @@ class CreateTOrderdetailsTable extends Migration
             $table->foreignId('Order_ID')->nullable();
             $table->foreignId('Product_ID')->nullable();
             $table->string('OrderDetail_ProductName');
+            $table->float('OrderDetail_ProductPrice', 12, 2);
             $table->integer('OrderDetail_Quantity');
-            $table->float('OrderDetail_Price', 12, 2);
+            $table->float('OrderDetail_TotalPrice', 12, 2);
             $table->text('OrderDetail_Note')->nullable();
             $table->tinyInteger('OrderDetail_Status');
             $table->timestamps();
-            $table->string('created_user');
-            $table->string('modified_user');
+            $table->string('created_user')->nullable();
+            $table->string('modified_user')->nullable();
             
             $table->foreign('Order_ID')->references('id')->on('t_orders')
             ->onUpdate('cascade')->onDelete('cascade');

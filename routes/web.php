@@ -115,13 +115,16 @@ Route::post('payment/checkout', "App\Http\Controllers\Frontend\PaymentController
 Route::get('payment/complete', "App\Http\Controllers\Frontend\PaymentController@complete");
 
 
+
+
+
 // Check Session
 use Illuminate\Support\Facades\Session;
 Route::get('session', function() {
     dump(session()->all());
 });
 
-// CheckModel
+// Check CartModel
 use App\Models\Frontend\CartModel;
 Route::get('model', function(){
     $cart = new CartModel();

@@ -5,14 +5,13 @@
     <div class="container-md" id="cart-site-container">
 
         <div id="cart-site-title">
-            <p id="cart-site-title-main">Shopping Cart</p>
-            <p id="cart-site-title-sub">(Lưu ý: Đăng nhập để theo dõi đơn đặt hàng)</p>
+            <p>Shopping Cart</p>
         </div>
 
         <div class="table-responsive">
             <table id="cart-site-table" class="table table-bordered">
                 <tbody id="cart-site-tbody">
-                    @if (isset($items))
+                    @if (isset($items) && !empty($items))
                         @foreach ($items as $item)
                             <tr>
                                 <td>
@@ -44,6 +43,9 @@
                                 <!-- end -->
                             </tr>
                         @endforeach
+                    @else
+                        <br>
+                        <p> <b>NO DATA FOUND!</b> </p>
                     @endif
                 </tbody>
             </table>
@@ -85,7 +87,11 @@
                         </div>
                     </div>
                     <div id="cart-site-box-proceed">
-                        <a class="btn" href="{{ url('payment') }}">PROCEED TO CHECKOUT</a>
+                        <a class="btn {{ ($items == null) ? 'disabled' : '' }}"
+                            style="{{ ($items == null) ? 'display:none' : '' }}"
+                            href="{{ url('payment') }}">
+                            PROCEED TO CHECKOUT
+                        </a>
                     </div>
                 </div>
             </div>

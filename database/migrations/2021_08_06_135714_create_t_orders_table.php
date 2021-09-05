@@ -23,13 +23,15 @@ class CreateTOrdersTable extends Migration
             $table->string('Customer_Address');
             
             $table->foreignId('Restaurant_ID')->nullable();
-            $table->string('Restaurant_Staff');
+            $table->string('Restaurant_Staff')->nullable();
             $table->string('Order_RestaurantName');
             
-            $table->integer('Order_TotalProducts');
+            $table->integer('Order_TotalItem');
+            $table->integer('Order_TotalQuantity');
             $table->float('Order_TotalPrice', 15, 2);
             $table->text('Order_Note')->nullable();
             
+            $table->string('Order_TrackingCode');
             $table->tinyInteger('Order_Status');
             $table->string('Order_CancelBy')->nullable();
             $table->text('Order_CancelReason')->nullable();
@@ -43,8 +45,8 @@ class CreateTOrdersTable extends Migration
             $table->dateTime('Order_Time_Return')->nullable();
             
             $table->timestamps();
-            $table->string('created_user');
-            $table->string('modified_user');
+            $table->string('created_user')->nullable();
+            $table->string('modified_user')->nullable();
             
             $table->foreign('User_ID')->references('id')->on('users')
             ->onUpdate('cascade')->onDelete('set null');
