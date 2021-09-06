@@ -414,7 +414,7 @@ body { animation: Transition 0.5s; }
     border-radius: 5px;
     padding: 15px 19px;
 }
-#track-container #track-form .form-control { 
+#track-container #track-form .form-control {
     background-color: #ffffea;
 }
 #track-container #track-table-info {

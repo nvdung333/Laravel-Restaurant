@@ -79,6 +79,14 @@ Route::group(['prefix' => 'backend/restaurant'], function()
     Route::get('info/{id}', "App\Http\Controllers\Backend\RestaurantController@info")->middleware("auth")->middleware("checkrole:admin|smod|mod");
 });
 
+// Backend Orders
+Route::group(['prefix' => 'backend/order'], function ()
+{
+    Route::get('index', "App\Http\Controllers\Backend\OrderController@index")->middleware("auth")->middleware("checkrole:admin|smod|mod");
+    Route::get('info/{id}', "App\Http\Controllers\Backend\OrderController@info")->middleware("auth")->middleware("checkrole:admin|smod|mod");
+    Route::post('info/{id}', "App\Http\Controllers\Backend\OrderController@info")->middleware("auth")->middleware("checkrole:admin|smod|mod");
+    Route::post('status/{id}', "App\Http\Controllers\Backend\OrderController@status")->middleware("auth")->middleware("checkrole:admin|smod|mod");
+});
 
 // Backend User Setting
 Route::group(['prefix' => 'backend/user'], function()

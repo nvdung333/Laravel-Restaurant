@@ -36,6 +36,7 @@
                                 <td style="text-align: center; vertical-align: middle;">
                                     <button
                                         class="btn btn-warning RemoveItem"
+                                        style="color: white"
                                         data-sessionID="{{$item['sessionID']}}">
                                         X
                                     </button>

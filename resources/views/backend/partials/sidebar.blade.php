@@ -57,7 +57,7 @@
     </li>
 
     <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ url("/backend/order/index") }}">
             <i class="fas fa-fw fa-clipboard-list"></i>
             <span>Đơn hàng</span></a>
     </li>
