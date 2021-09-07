@@ -25,13 +25,13 @@
     @endif
 
     @if (isset($customErrors) && !empty($customErrors))
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($customErrors as $customError)
-                <li>{{ $customError }}</li>
-            @endforeach
-        </ul>
-    </div>
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($customErrors as $customError)
+                    <li>{{ $customError }}</li>
+                @endforeach
+            </ul>
+        </div>
     @endif
     
     <div style="padding-bottom: 10px">

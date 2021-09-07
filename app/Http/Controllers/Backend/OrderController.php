@@ -18,6 +18,14 @@ class OrderController extends Controller
         $order_by = $request->query('orderby', "");
         $order_dir = $request->query('orderdir', "");
 
+        $whereBetween = $request->query('whereBetween', "Order_Time_Request");
+        $time_start = $request->query('time_start', "");
+        $time_end = $request->query('time_end', "");
+        $now = date('Y-m-d H:i:s');
+
+        // Mảng báo lỗi
+        $customErrors=[];
+
         // Lệnh truy vấn gốc
         $queryORM = OrdersModel::select()
         ->where(function ($query) use ($search_keyword) {
@@ -48,6 +56,28 @@ class OrderController extends Controller
         }
         // Sắp xếp truy vấn gốc
         $queryORM->orderBy('id', 'desc');
+        // Sắp xếp trong khoảng thời gian
+        if ($time_start!="" and $time_end!="") {
+            if ($time_start > $now or $time_end > $now) {
+                $customErrors[]="Thời gian đã chọn đang lớn hơn thời gian hiện tại.";
+            }
+            if ($time_start > $time_end) {
+                $customErrors[]="Thời gian bắt đầu phải sớm hơn Thời gian kết thúc.";
+            }
+            $queryORM->whereBetween($whereBetween, [$time_start, $time_end]);
+        }
+        elseif ($time_start!="" && $time_end=="") {
+            if ($time_start > $now) {
+                $customErrors[]="Thời gian đã chọn đang lớn hơn thời gian hiện tại.";
+            }
+            $queryORM->where($whereBetween, '>=', $time_start);
+        }
+        elseif ($time_start=="" && $time_end!="") {
+            if ($time_end > $now) {
+                $customErrors[]="Thời gian đã chọn đang lớn hơn thời gian hiện tại.";
+            }
+            $queryORM->where($whereBetween, '<=', $time_end);
+        }
 
         // Hoàn thành lệnh truy vấn
         $orders = $queryORM->paginate(20)->withQueryString();
@@ -68,7 +98,11 @@ class OrderController extends Controller
         $data['whereStatus'] = $whereStatus;
         $data['order_by'] = $order_by;
         $data['order_dir'] = $order_dir;
+        $data['whereBetween'] = $whereBetween;
+        $data['time_start'] = $time_start;
+        $data['time_end'] = $time_end;
         $data['status'] = $status;
+        $data['customErrors'] = $customErrors;
 
         return view('backend.orders.index', $data);
     }

@@ -20,6 +20,9 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset("/be-assets/css/sb-admin-2.min.css") }}" rel="stylesheet">
 
+    <!-- datetimepicker -->
+    <link rel="stylesheet" type="text/css" href="{{ asset("/datetimepicker/src/DateTimePicker.css") }}" />
+
 </head>
 
 <body id="page-top">
@@ -101,6 +104,9 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset("/be-assets/js/demo/chart-area-demo.js") }}"></script>
     <script src="{{ asset("/be-assets/js/demo/chart-pie-demo.js") }}"></script>
+
+    <!-- datetimepicker -->
+    <script type="text/javascript" src="{{ asset("/datetimepicker/src/DateTimePicker.js") }}"></script>
 
     @yield("appendjs")
 

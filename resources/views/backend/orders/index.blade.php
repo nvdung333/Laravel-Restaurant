@@ -14,6 +14,16 @@
         </div>
     @endif
 
+    @if (isset($customErrors) && !empty($customErrors))
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($customErrors as $customError)
+                    <li>{{ $customError }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div style="padding-bottom: 10px">
         <a href="{{ url("/backend/order/index") }}" class="btn btn-success">Refresh</a>
     </div>
@@ -24,7 +34,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="keyword">Tìm kiếm (nhập theo Mã track / SĐT / Email)</label>
-                    <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Search for..." value="{{ $search_keyword }}">
+                    <input type="text" name="keyword" class="form-control" placeholder="Search for..." value="{{ $search_keyword }}">
                 </div>
             </div>
         </div>
@@ -32,8 +42,8 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="whereStatus">Trạng thái...</label>
-                    <select name="whereStatus" id="whereStatus" class="custom-select">
+                    <label>Trạng thái...</label>
+                    <select name="whereStatus" class="custom-select">
                         <option value="">Choose...</option>
                         <option value="1" {{ $whereStatus == "1" ? "selected" : "" }}>{{$status[1]}}</option>
                         <option value="2" {{ $whereStatus == "2" ? "selected" : "" }}>{{$status[2]}}</option>
@@ -46,8 +56,8 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="orderby">Sắp xếp theo...</label>
-                    <select name="orderby" id="orderby" class="custom-select">
+                    <label>Sắp xếp theo...</label>
+                    <select name="orderby" class="custom-select">
                         <option value="">Choose...</option>
                         <option value="Order_Status" {{ $order_by == "Order_Status" ? "selected" : "" }}>Status</option>
                         <option value="Order_TotalPrice" {{ $order_by == "Order_TotalPrice" ? "selected" : "" }}>Total Price</option>
@@ -58,14 +68,40 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="form-group">
-                    <label for="orderdir">Hướng sắp xếp...</label>
-                    <select name="orderdir" id="orderdir" class="custom-select">
+                    <label>Hướng sắp xếp...</label>
+                    <select name="orderdir" class="custom-select">
                         <option value="">Choose...</option>
                         <option value="ASC" {{ $order_dir == "ASC" ? "selected" : "" }}>Ascending</option>
                         <option value="DESC" {{ $order_dir == "DESC" ? "selected" : "" }}>Descending</option>
                     </select>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label>Theo thời gian...</label>
+                    <select name="whereBetween" class="custom-select">
+                        <option value="" disabled>Choose...</option>
+                        <option value="Order_Time_Request" {{ $whereBetween == "Order_Time_Request" ? "selected" : "" }}>Time_Request</option>
+                        <option value="Order_Time_Accept" {{ $whereBetween == "Order_Time_Accept" ? "selected" : "" }}>Time_Accept</option>
+                        <option value="Order_Time_Complete" {{ $whereBetween == "Order_Time_Complete" ? "selected" : "" }}>Time_Complete</option>
+                        <option value="Order_Time_Receive" {{ $whereBetween == "Order_Time_Receive" ? "selected" : "" }}>Time_Receive</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Time start:</label>
+                    <input type="text" class="form-control" name="time_start" data-field="datetime" value="{{$time_start}}" readonly>
+                    <div id="dtBox"></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Time end:</label>
+                    <input type="text" class="form-control" name="time_end" data-field="datetime" value="{{$time_end}}" readonly>
+                    <div id="dtBox"></div>
                 </div>
             </div>
             <div class="col-md-1">
@@ -120,4 +156,12 @@
 
     {{ $orders->links("pagination::bootstrap-4") }}
 
+@endsection
+
+@section('appendjs')
+    <script>
+        $(document).ready(function() {
+            $("#dtBox").DateTimePicker();
+        });
+    </script>
 @endsection
