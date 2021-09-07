@@ -85,9 +85,9 @@ class OrderController extends Controller
 
         // Đặt tên trạng thái để đưa lên view
         $status=[];
-        $status[0] = "Hủy";
+        $status[0] = "Hủy đơn";
         $status[1] = "Đang yêu cầu";
-        $status[2] = "Chấp nhận yêu cầu";
+        $status[2] = "Chấp nhận/Đang làm";
         $status[3] = "Đã xong/Đang giao";
         $status[4] = "Giao nhận xong";
         $status[5] = "Trả lại";
@@ -130,21 +130,19 @@ class OrderController extends Controller
             if(isset($Order_RestaurantName))
             { $orderUpdate->Order_RestaurantName = $Order_RestaurantName; }
             $orderUpdate->Restaurant_Staff = $request->input('Restaurant_Staff', "");
+            $orderUpdate->modified_user = auth()->user()->id;
             $orderUpdate->save();
             return redirect("/backend/order/info/$id")->with('status', 'Cập nhật thông tin thành công!');
         }
 
         // Đặt tên trạng thái để đưa lên view
         $status=[];
-        $status[0] = "Hủy";
+        $status[0] = "Hủy đơn";
         $status[1] = "Đang yêu cầu";
-        $status[2] = "Chấp nhận yêu cầu";
+        $status[2] = "Chấp nhận/Đang làm";
         $status[3] = "Đã xong/Đang giao";
         $status[4] = "Giao nhận xong";
         $status[5] = "Trả lại";
-
-        
-        $customErrors=[];
 
         // Truyền dữ liệu tới view
         $data = [];
@@ -153,7 +151,6 @@ class OrderController extends Controller
         $data['users'] = $users;
         $data['restaurants'] = $restaurants;
         $data['status'] = $status;
-        $data['customErrors'] = $customErrors;
 
         return view("backend.orders.info", $data);
     }
@@ -173,7 +170,15 @@ class OrderController extends Controller
             $order->Order_Time_Accept = null;
             $order->Order_Time_Complete = null;
             $order->Order_Time_Receive = null;
+            $order->modified_user = auth()->user()->id;
             $order->save();
+            $query = OrderDetailsModel::where('Order_ID', $id)->get();
+            foreach ($query as $value) {
+                $orderdetails = OrderDetailsModel::findorFail($value->id);
+                $orderdetails->OrderDetail_Status = 1;
+                $orderdetails->modified_user = auth()->user()->id;
+                $orderdetails->save();
+            }
         }
 
         if ($Order_Status == 2) {
@@ -182,7 +187,15 @@ class OrderController extends Controller
             $order->Order_Time_Accept = $now;
             $order->Order_Time_Complete = null;
             $order->Order_Time_Receive = null;
+            $order->modified_user = auth()->user()->id;
             $order->save();
+            $query = OrderDetailsModel::where('Order_ID', $id)->get();
+            foreach ($query as $value) {
+                $orderdetails = OrderDetailsModel::findorFail($value->id);
+                $orderdetails->OrderDetail_Status = 2;
+                $orderdetails->modified_user = auth()->user()->id;
+                $orderdetails->save();
+            }
         }
 
         if ($Order_Status == 3) {
@@ -190,14 +203,30 @@ class OrderController extends Controller
             $order->Order_Status = 3;
             $order->Order_Time_Complete = $now;
             $order->Order_Time_Receive = null;
+            $order->modified_user = auth()->user()->id;
             $order->save();
+            $query = OrderDetailsModel::where('Order_ID', $id)->get();
+            foreach ($query as $value) {
+                $orderdetails = OrderDetailsModel::findorFail($value->id);
+                $orderdetails->OrderDetail_Status = 3;
+                $orderdetails->modified_user = auth()->user()->id;
+                $orderdetails->save();
+            }
         }
 
         if ($Order_Status == 4) {
             $order = OrdersModel::findorFail($id);
             $order->Order_Status = 4;
             $order->Order_Time_Receive = $now;
+            $order->modified_user = auth()->user()->id;
             $order->save();
+            $query = OrderDetailsModel::where('Order_ID', $id)->get();
+            foreach ($query as $value) {
+                $orderdetails = OrderDetailsModel::findorFail($value->id);
+                $orderdetails->OrderDetail_Status = 4;
+                $orderdetails->modified_user = auth()->user()->id;
+                $orderdetails->save();
+            }
         }
 
         if ($Order_Status == 5) {
@@ -205,7 +234,15 @@ class OrderController extends Controller
             $order->Order_Status = 5;
             $order->Order_Time_Return = $now;
             $order->Order_ReturnReason = $Order_ReturnReason;
+            $order->modified_user = auth()->user()->id;
             $order->save();
+            $query = OrderDetailsModel::where('Order_ID', $id)->get();
+            foreach ($query as $value) {
+                $orderdetails = OrderDetailsModel::findorFail($value->id);
+                $orderdetails->OrderDetail_Status = 5;
+                $orderdetails->modified_user = auth()->user()->id;
+                $orderdetails->save();
+            }
         }
 
         if ($Order_Status == 0) {
@@ -214,7 +251,15 @@ class OrderController extends Controller
             $order->Order_Time_Cancel = $now;
             $order->Order_CancelReason = $Order_CancelReason;
             $order->Order_CancelBy = Auth::user()->User_FullName;
+            $order->modified_user = auth()->user()->id;
             $order->save();
+            $query = OrderDetailsModel::where('Order_ID', $id)->get();
+            foreach ($query as $value) {
+                $orderdetails = OrderDetailsModel::findorFail($value->id);
+                $orderdetails->OrderDetail_Status = 0;
+                $orderdetails->modified_user = auth()->user()->id;
+                $orderdetails->save();
+            }
         }
 
         return redirect("/backend/order/info/$id")->with('status', 'Cập nhật trạng thái thành công!');

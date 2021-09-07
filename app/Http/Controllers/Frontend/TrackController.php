@@ -28,9 +28,9 @@ class TrackController extends Controller
         }
 
         $orderstatus=[];
-        $orderstatus[0] = "Hủy";
+        $orderstatus[0] = "Hủy đơn";
         $orderstatus[1] = "Đang yêu cầu";
-        $orderstatus[2] = "Chấp nhận yêu cầu";
+        $orderstatus[2] = "Chấp nhận/Đang làm";
         $orderstatus[3] = "Đã xong/Đang giao";
         $orderstatus[4] = "Giao nhận xong";
         $orderstatus[5] = "Trả lại";

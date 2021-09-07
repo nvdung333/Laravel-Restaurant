@@ -24,16 +24,6 @@
         </div>
     @endif
 
-    @if (isset($customErrors) && !empty($customErrors))
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($customErrors as $customError)
-                    <li>{{ $customError }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    
     <div style="padding-bottom: 10px">
         <a href="{{ url("/backend/order/index") }}" class="btn btn-secondary">Trở về</a>
         <a href="{{ url("/backend/order/info/$order->id") }}" class="btn btn-success">Refresh</a>
@@ -117,16 +107,9 @@
                         <input type="text" name="Restaurant_Staff" class="form-control" value="{{ $order->Restaurant_Staff }}">
                     </div>
                 </div>
-                
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="Order_Note">Note:</label>
-                        <textarea class="form-control" rows="3" readonly>{{$order->Order_Note}}</textarea>
-                    </div>
-                </div>
             </div>
 
-            <button type="submit" class="btn btn-dark">Update</button>
+            <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-dark">Update</button>
         </div>
     </form>
 
@@ -215,34 +198,42 @@
         </table>
     </div>
 
-    <div class="row" style="text-align: center">
-        <div class="col-md-3">
-            <form method="post" action="{{ url("/backend/order/status/$order->id") }}" enctype="multipart/form-data">
-                @csrf
-                <input type="hidden" name="Order_Status" value="1">
-                <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-success">SET REQUEST</button>
-            </form>
-        </div>
-        <div class="col-md-3">
-            <form method="post" action="{{ url("/backend/order/status/$order->id") }}" enctype="multipart/form-data">
-                @csrf
-                <input type="hidden" name="Order_Status" value="2">
-                <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-primary">SET ACCEPT</button>
-            </form>
-        </div>
-        <div class="col-md-3">
-            <form method="post" action="{{ url("/backend/order/status/$order->id") }}" enctype="multipart/form-data">
-                @csrf
-                <input type="hidden" name="Order_Status" value="3">
-                <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-warning">SET COMPLETE</button>
-            </form>
-        </div>
-        <div class="col-md-3">
-            <form method="post" action="{{ url("/backend/order/status/$order->id") }}" enctype="multipart/form-data">
-                @csrf
-                <input type="hidden" name="Order_Status" value="4">
-                <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-danger">SET RECEIVE</button>
-            </form>
+    <div style="border: 1px solid grey; border-radius: 5px; padding: 11px; margin-bottom: 12px;">
+        <div class="row" style="text-align: center;">
+            <div class="col-md-12" style="text-align: start">
+                <div class="form-group">
+                    <label for="Order_Note">Note:</label>
+                    <textarea class="form-control" rows="3" readonly>{{$order->Order_Note}}</textarea>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <form method="post" action="{{ url("/backend/order/status/$order->id") }}" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="Order_Status" value="1">
+                    <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-success">SET REQUEST</button>
+                </form>
+            </div>
+            <div class="col-md-3">
+                <form method="post" action="{{ url("/backend/order/status/$order->id") }}" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="Order_Status" value="2">
+                    <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-primary">SET ACCEPT</button>
+                </form>
+            </div>
+            <div class="col-md-3">
+                <form method="post" action="{{ url("/backend/order/status/$order->id") }}" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="Order_Status" value="3">
+                    <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-warning">SET COMPLETE</button>
+                </form>
+            </div>
+            <div class="col-md-3">
+                <form method="post" action="{{ url("/backend/order/status/$order->id") }}" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="Order_Status" value="4">
+                    <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-danger">SET RECEIVE</button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -256,7 +247,7 @@
                     <input type="hidden" name="Order_Status" value="0">
                     <input type="text" name="Order_CancelReason" class="form-control" value="{{ $order->Order_CancelReason }}">
                 </div>
-                <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-dark">CANCEL ORDER</button>
+                <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-dark">SET CANCEL ORDER</button>
             </form>
         </div>
         <div class="col-md-12">
@@ -267,7 +258,7 @@
                     <input type="hidden" name="Order_Status" value="5">
                     <input type="text" name="Order_ReturnReason" class="form-control" value="{{ $order->Order_ReturnReason }}">
                 </div>
-                <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-dark">RETURN GOODS</button>
+                <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-dark">SET RETURN GOODS</button>
             </form>
         </div>
     </div>

@@ -76,12 +76,24 @@
                     <td>{{ $order->Order_Time_Receive }}</td>
                 </tr>
                 <tr>
+                    <th>Time Cancel</th>
+                    <td>{{ $order->Order_Time_Cancel }}</td>
+                </tr>
+                <tr>
+                    <th>Cancel By</th>
+                    <td>{{ $order->Order_CancelBy }}</td>
+                </tr>
+                <tr>
+                    <th>Cancel Reason</th>
+                    <td>{{ $order->Order_CancelReason }}</td>
+                </tr>
+                <tr>
                     <th>Time Return</th>
                     <td>{{ $order->Order_Time_Return }}</td>
                 </tr>
                 <tr>
-                    <th>Time Cancel</th>
-                    <td>{{ $order->Order_Time_Cancel }}</td>
+                    <th>Return Reason</th>
+                    <td>{{ $order->Order_ReturnReason }}</td>
                 </tr>
             </table>
         @endif

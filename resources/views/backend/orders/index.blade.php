@@ -80,7 +80,7 @@
             </div>
             <div class="col-md-5">
                 <div class="form-group">
-                    <label>Theo thời gian...</label>
+                    <label>Lấy mốc thời gian...</label>
                     <select name="whereBetween" class="custom-select">
                         <option value="" disabled>Choose...</option>
                         <option value="Order_Time_Request" {{ $whereBetween == "Order_Time_Request" ? "selected" : "" }}>Time_Request</option>
@@ -93,14 +93,14 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Time start:</label>
-                    <input type="text" class="form-control" name="time_start" data-field="datetime" value="{{$time_start}}" readonly>
+                    <input type="text" class="form-control" name="time_start" data-field="datetime" value="{{$time_start}}" placeholder="Click to pick..." readonly>
                     <div id="dtBox"></div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Time end:</label>
-                    <input type="text" class="form-control" name="time_end" data-field="datetime" value="{{$time_end}}" readonly>
+                    <input type="text" class="form-control" name="time_end" data-field="datetime" value="{{$time_end}}" placeholder="Click to pick..." readonly>
                     <div id="dtBox"></div>
                 </div>
             </div>
