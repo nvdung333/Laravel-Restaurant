@@ -219,28 +219,28 @@
         <div class="col-md-3">
             <form method="post" action="{{ url("/backend/order/status/$order->id") }}" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="orderRequest" value="1">
+                <input type="hidden" name="Order_Status" value="1">
                 <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-success">SET REQUEST</button>
             </form>
         </div>
         <div class="col-md-3">
             <form method="post" action="{{ url("/backend/order/status/$order->id") }}" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="orderAccept" value="1">
+                <input type="hidden" name="Order_Status" value="2">
                 <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-primary">SET ACCEPT</button>
             </form>
         </div>
         <div class="col-md-3">
             <form method="post" action="{{ url("/backend/order/status/$order->id") }}" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="orderComplete" value="1">
+                <input type="hidden" name="Order_Status" value="3">
                 <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-warning">SET COMPLETE</button>
             </form>
         </div>
         <div class="col-md-3">
             <form method="post" action="{{ url("/backend/order/status/$order->id") }}" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="orderReceive" value="1">
+                <input type="hidden" name="Order_Status" value="4">
                 <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-danger">SET RECEIVE</button>
             </form>
         </div>
@@ -253,7 +253,7 @@
                 <div class="form-group">
                     <label>Cancel by: {{$order->Order_CancelBy}}</label><br>
                     <label>Cancel reason:</label>
-                    <input type="hidden" name="orderCancel" value="1">
+                    <input type="hidden" name="Order_Status" value="0">
                     <input type="text" name="Order_CancelReason" class="form-control" value="{{ $order->Order_CancelReason }}">
                 </div>
                 <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-dark">CANCEL ORDER</button>
@@ -264,7 +264,7 @@
                 @csrf
                 <div class="form-group">
                     <label>Return reason:</label>
-                    <input type="hidden" name="orderReturn" value="1">
+                    <input type="hidden" name="Order_Status" value="5">
                     <input type="text" name="Order_ReturnReason" class="form-control" value="{{ $order->Order_ReturnReason }}">
                 </div>
                 <button type="submit" onclick='return confirm("Are you sure?")' class="btn btn-dark">RETURN GOODS</button>
