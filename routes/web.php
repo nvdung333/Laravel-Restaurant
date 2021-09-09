@@ -124,6 +124,13 @@ Route::get('payment', "App\Http\Controllers\Frontend\PaymentController@index");
 Route::post('payment/checkout', "App\Http\Controllers\Frontend\PaymentController@checkout");
 Route::get('payment/complete', "App\Http\Controllers\Frontend\PaymentController@complete");
 
+// Frontend User
+Route::group(['prefix' => 'user'], function () {
+    Route::get('history', "App\Http\Controllers\Frontend\UserController@historyIndex")->middleware("auth");
+    Route::get('history/{id}', "App\Http\Controllers\Frontend\UserController@historyInfo")->middleware("auth");
+    Route::post('history/{id}', "App\Http\Controllers\Frontend\UserController@historyInfo")->middleware("auth");
+});
+
 
 
 

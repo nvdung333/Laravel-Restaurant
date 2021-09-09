@@ -20,7 +20,7 @@
                     {{ Auth::user()->User_FullName }}
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" style="background: #ffffe0;">
-                    <a class="dropdown-item" href="#history" style="color: brown;"><i class="fas fa-history"></i> History</a>
+                    <a class="dropdown-item" href="{{ url('user/history') }}" style="color: brown;"><i class="fas fa-history"></i> History</a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                             style="color: brown;"
                             onclick="event.preventDefault();
